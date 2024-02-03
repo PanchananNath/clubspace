@@ -2,10 +2,12 @@ import Image from "next/image";
 import { LuLogIn } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import SideBar from "@/components/common/SideBar";
 
 export default function Test() {
   return (
     <div className="min-h-screen flex justify-center bg-gradient-to-r from-green-600 to-green-100">
+      <SideBar />
       <form
         action=""
         className="w-96 h-fit bg-green-300 rounded-3xl self-center shadow-2xl"

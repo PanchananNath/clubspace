@@ -54,7 +54,7 @@ export default function SideBar() {
 function SideBarItem(props: { icon: any; text: String; active?: boolean }) {
   return (
     <li className="m-3 p-3 h-fill w-fill ">
-      <a href="" className="flex items-center">
+      <a href="" className="flex items-center hover:bg-quaternary">
         {props.icon}
         <span className="ml-4 text-white">{props.text}</span>
       </a>
