@@ -18,6 +18,7 @@ const config: Config = {
         secondary: "#DCF2F1",
         ternary: "#DCF2F1",
         quaternary: "#0F1035",
+        grey: "#C1C1C1",
       },
     },
   },

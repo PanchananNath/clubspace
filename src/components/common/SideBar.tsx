@@ -11,7 +11,7 @@ import SideBarItem from "./SideBarItem";
 export default function SideBar() {
   return (
     <aside className="h-screen flex self-start">
-      <nav className="h-full flex flex-col bg-primary border-r-2 border-black">
+      <nav className="h-full w-64 flex flex-col bg-primary">
         <div className="p-4 mb-10 flex items-center text-white font-extrabold text-2xl">
           <Image
             src={logo}
@@ -30,31 +30,31 @@ export default function SideBar() {
             active={true}
           />
           <SideBarItem
-            icon={<MdEvent className="text-white h-7 w-7" />}
+            icon={<MdEvent className="text-grey h-7 w-7" />}
             route={"/events"}
             text={"Events"}
             active={false}
           />
           <SideBarItem
-            icon={<PiUsersThreeFill className="text-white h-7 w-7" />}
+            icon={<PiUsersThreeFill className="text-grey h-7 w-7" />}
             route={"/clubs"}
             text={"All Clubs"}
             // active={true}
           />
           <SideBarItem
-            icon={<MdAccountCircle className="text-white h-7 w-7" />}
+            icon={<MdAccountCircle className="text-grey h-7 w-7" />}
             route={"/myaccount"}
             text={"My Account"}
           />
         </ul>
         <ul className="flex-0">
           <SideBarItem
-            icon={<FiSettings className="text-white h-7 w-7" />}
+            icon={<FiSettings className="text-grey h-7 w-7" />}
             route={"/"}
             text={"Settings"}
           />
           <SideBarItem
-            icon={<TbLogout className="text-white h-7 w-7" />}
+            icon={<TbLogout className="text-grey h-7 w-7" />}
             route={"/"}
             text={"Log Out"}
           />

@@ -25,9 +25,7 @@ function SideBarItem(props: {
         }}
       >
         {props.icon}
-        <span
-          className={props.active ? "ml-4 text-white" : "ml-4 text-red-300"}
-        >
+        <span className={props.active ? "ml-4 text-white" : "ml-4 text-grey"}>
           {props.text}
         </span>
       </Link>
