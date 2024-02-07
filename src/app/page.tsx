@@ -1,9 +1,7 @@
-import SideBar from "@/components/common/SideBar";
-
 export default function Home() {
   return (
-    <main className="flex">
-      <SideBar />
+    <main className="flex justify-center min-w-screen">
+      <div>Hello</div>
     </main>
   );
 }
