@@ -50,12 +50,12 @@ export default function SideBar() {
         <ul className="flex-0">
           <SideBarItem
             icon={<FiSettings className="text-grey h-7 w-7" />}
-            route={"/"}
+            route={"/settings"}
             text={"Settings"}
           />
           <SideBarItem
             icon={<TbLogout className="text-grey h-7 w-7" />}
-            route={"/"}
+            route={"/login"}
             text={"Log Out"}
           />
         </ul>
