@@ -1,0 +1,146 @@
+Table institutes {
+  id int [primary key]
+  name varchar(255)
+}
+
+Table departments {
+  id int [primary key]
+  name varchar(255)
+}
+
+Table modules {
+  id int [primary key]
+  name varchar(255)
+}
+
+Table user_types {
+  id int [primary key]
+  name varchar(50)
+}
+
+Table users {
+  id int [primary key]
+  firstname varchar(255)
+  lastname varchar(255)
+  username varchar(255)
+  email varchar(255)
+  institute_id int [ref: > institutes.id]
+  department_id int [ref: > departments.id]
+  type_id int [ref: > user_types.id]
+  linkedin varchar(255)
+  phone varchar(255)
+  photo varchar(255)
+}
+
+Table student_data {
+  userid int [ref: > users.id]
+  resume varchar(255)
+  semester varchar(50)
+  module int [ref: > modules.id]
+}
+
+Table faculty_data {
+  user_id int [ref: > users.id]
+  designation varchar(255)
+  secondary_designation varchar(255)
+}
+
+Table clubs {
+  id int [primary key]
+  name varchar(255)
+  about text
+  vision text
+  objective text
+  poster varchar(255)
+}
+
+Table admins_club_link {
+  clubid int [ref: > clubs.id]
+  userid int [ref: > users.id]
+  primary key (clubid, userid)
+}
+
+Table alumni_club_link {
+  clubid int [ref: > clubs.id]
+  userid int [ref: > users.id]
+  primary key (clubid, userid)
+}
+
+Table club_mentor_link {
+  club_id int [ref: > clubs.id]
+  user_id int [ref: > users.id]
+  primary key (club_id, user_id)
+}
+
+Table core_member_link {
+  user_id int [ref: > users.id]
+  club_id int [ref: > clubs.id]
+  primary key (user_id, club_id)
+}
+
+Table events {
+  eventid serial [primary key]
+  name varchar(255)
+  poster varchar(255)
+  venue varchar(255)
+  date_time timestamp
+  description text
+  registration_url varchar(255)
+  qr_code varchar(255)
+}
+
+Table events_club_link {
+  club_id int [ref: > clubs.id]
+  event_id int [ref: > events.eventid]
+  primary key (club_id, event_id)
+}
+
+Table event_sponsors {
+  eventid int [ref: > events.eventid]
+  sponsorname varchar(255)
+  sponsor_url varchar(255)
+  sponsor_logo varchar(255)
+  primary key (eventid, sponsorname)
+}
+
+Table user_club_link {
+  user_id int [ref: > users.id]
+  club_id int [ref: > clubs.id]
+  primary key (user_id, club_id)
+}
+
+Table feeds {
+  feedid int [primary key]
+  title varchar(255)
+  content text
+  contenttype varchar(50)
+  caption varchar(255)
+  userid int [ref: > users.id]
+  time timestamp
+  hashtags varchar(255)
+}
+
+Table reactions {
+  reactionid int [primary key]
+  name varchar(255)
+  icon varchar(255)
+}
+
+Table reactions_feed_link {
+  feedid int [ref: > feeds.feedid]
+  userid int [ref: > users.id]
+  reactionid int [ref: > reactions.reactionid]
+  primary key (feedid, userid, reactionid)
+}
+
+Table event_photos {
+  eventid int [ref: > events.eventid]
+  photourl varchar(255)
+  primary key (eventid, photourl)
+}
+
+Table event_contact_link {
+  eventid int [ref: > events.eventid]
+  userid int [ref: > users.id]
+  primary key (eventid, userid)
+}
