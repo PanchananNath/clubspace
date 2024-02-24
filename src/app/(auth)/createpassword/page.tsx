@@ -1,4 +1,4 @@
-import Createpassword from "@/components/createpassword";
+import Createpassword from "@/components/common/createpassword";
 
 export default function Createpass() {
     return (

@@ -1,4 +1,4 @@
-import Checkmail from "@/components/checkmail";
+import Checkmail from "@/components/common/checkmail";
 
 export default function CheckMail() {
     return (

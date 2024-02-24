@@ -1,4 +1,4 @@
-import Login from "@/components/login";
+import Login from "@/components/common/login";
 import Image from "next/image";
 
 export default function LoginPAGE() {

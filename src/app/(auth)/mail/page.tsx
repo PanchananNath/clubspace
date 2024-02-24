@@ -1,4 +1,4 @@
-import Mail from "@/components/mail";
+import Mail from "@/components/common/mail";
 
 export default function MailInterface() {
     return (
