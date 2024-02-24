@@ -6,11 +6,11 @@ export default function Register() {
                 <h2 className="font-bold text-2xl text-[#365486]">Create Account</h2>
                 <p className="text-xs text-black">Please enter your details</p>
                 <form action="" className="flex flex-col gap-4">
-                    <input className="p-2 mt-4 text-sm rounded-lg border w-full" type="name" name="name" placeholder="Name"/>
-                    <input className="p-2  text-sm rounded-lg border" type="text" name="email" placeholder="Email"/>
-                    <input className="p-2 text-sm rounded-lg border w-full" type="password" name="password" placeholder="Password"/>
+                    <input className="p-2 mt-4 text-sm text-black rounded-lg border w-full" type="text" name="name" placeholder="Name"/>
+                    <input className="p-2  text-sm text-black rounded-lg border" type="text" name="email" placeholder="Email"/>
+                    <input className="p-2 text-sm text-black rounded-lg border w-full" type="password" name="password" placeholder="Password"/>
                     
-                    <button className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300">Register</button>
+                    <button className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300"><Link href="/">Register</Link></button>
                 </form>
                 <div className="text-xs text-black flex justify-center mt-1">
                     <Link href="./login" className="text-blue-700 hover:cursor-pointer">Login</Link>

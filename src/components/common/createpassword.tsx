@@ -8,7 +8,7 @@ export default function Createpassword() {
                 <form action="" className="flex flex-col gap-4">
                     <input className="p-2 text-sm rounded-lg border w-full" type="password" name="password" placeholder="Enter new Password"/>
                     <input className="p-2 text-sm rounded-lg border w-full" type="password" name="password" placeholder="Confirm new Password"/>
-                    <Link href="./login" className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"><button >Reset Password</button></Link>
+                    <button className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"><Link href="./login" >Reset Password</Link></button>
                 </form>
             </div>   
     )

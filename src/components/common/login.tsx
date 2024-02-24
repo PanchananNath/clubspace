@@ -18,7 +18,7 @@ export default function Login() {
                     </div>
                     </div>
                     
-                    <button className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center">Login</button>
+                    <button className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"><Link href="/" >Login</Link></button>
                 </form>
 
                 <button className="bg-white text-black border py-2 w-full rounded-lg mt-3 flex justify-center items-center text-sm hover:scale-105 duration-300"><svg xmlns="http://www.w3.org/2000/svg" className="mr-3" x="0px" y="0px"  width="25px" height="25px" viewBox="0 0 48 48">

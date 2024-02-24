@@ -8,7 +8,7 @@ export default function Checkmail() {
                 we have sent a password recover instructions to your mail.
                 </p>
                 <form action="" className="flex flex-col gap-4">
-                    <Link href="./mail" className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"><button >Check Mail</button></Link>
+                <button className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"><Link href="./mail" >Check Mail</Link></button>
                     
                 </form>
             </div>   
