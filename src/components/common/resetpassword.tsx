@@ -10,7 +10,7 @@ export default function ResetPass() {
                 </p>
                 <form action="" className="flex flex-col gap-4">
                     <input className="p-2 text-sm rounded-lg border w-full" type="text" name="email" placeholder="Enter your email"/>
-                    <Link href="./checkmail" className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"><button >Send</button></Link>
+                    <button className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"> <Link href="./checkmail" >Send</Link></button>
                     
                 </form>
             </div>   
