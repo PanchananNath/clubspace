@@ -10,7 +10,7 @@ export default function Register() {
                     <input className="p-2  text-sm rounded-lg border" type="text" name="email" placeholder="Email"/>
                     <input className="p-2 text-sm rounded-lg border w-full" type="password" name="password" placeholder="Password"/>
                     
-                    <button className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300">Register</button>
+                    <button className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300"><Link href="/">Register</Link></button>
                 </form>
                 <div className="text-xs text-black flex justify-center mt-1">
                     <Link href="./login" className="text-blue-700 hover:cursor-pointer">Login</Link>
