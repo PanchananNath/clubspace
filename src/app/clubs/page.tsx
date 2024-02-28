@@ -2,7 +2,7 @@ import CustomCard, { CardProps } from "@/components/clubcard";
 import { sql } from "@vercel/postgres";
 
 export default async function Clubs() {
-  const { rows } = await sql`SELECT * FROM clubs;`;
+  const { rows } = await sql`SELECT name FROM clubs;`;
 
   console.log(rows);
 
