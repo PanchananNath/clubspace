@@ -1,7 +1,7 @@
 
 export default function MyRemainders() {
     return (
-      <div id="remainder" className="w-80 h-80 border border-black bg-gray-100 absolute left-96 top-32 cursor-pointer">
+      <div id="remainder" className="w-80 h-80 border border-black bg-red-500 absolute left-96 top-32 cursor-pointer">
         <header className="pl-4 mt-4">
           <h2 className="text-xl font-semibold text-blue-500">My Remainders</h2>
         </header>
