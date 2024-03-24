@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import Link from "next/link";
 
-export default function Profile() {
+export default function Account() {
   const [dropdown1Open, setDropdown1Open] = useState(false);
   const [dropdown2Open, setDropdown2Open] = useState(false);
   const [dropdown3Open, setDropdown3Open] = useState(false);
