@@ -7,7 +7,27 @@ import { useState } from "react";
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
+
+  const handleSignIn = async () => {
+
+    // Perform sign-in
+    const result = await signIn('credentials', {
+      email,
+      password,
+      redirect: false // Set redirect to false to handle redirection manually
+    });
+
+    if (result?.error) {
+      // Handle sign-in error
+      window.alert("Sign in error: " + result.error);
+    } else {
+      // Navigate to myaccount page after successful sign-in
+      router.push("/myaccount");
+    }
+  };
+
   return (
     <div className="bg-gray-50 px-10 py-3 w-96">
       <h2 className="font-bold text-2xl text-[#365486]">Signin</h2>
@@ -57,7 +77,7 @@ export default function SignIn() {
         </div>
 
         <button 
-            onClick={() => signIn('credentials', {email, password, redirect: true,  callbackUrl: "/"})} 
+            onClick={handleSignIn} 
             className="bg-[#365486] rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center">
           Signin
         </button>
