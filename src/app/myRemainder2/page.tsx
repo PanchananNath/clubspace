@@ -9,7 +9,7 @@ export default async function MyRemainders() {
   console.log(rows);
 
   return (
-    <div id="remainder" className="w-80 h-100 shadow-2xl shadow-neutral-400  bg-sky-100 absolute left-98 top-32 cursor-pointer text-sm ml-2">
+    <div id="remainder" className="w-80 h-100 border border-black bg-white absolute left-98 top-32 cursor-pointer text-sm ml-2">
       {/* <small className="text-sm ml-2"></small> *modify upeer class*/}
       <header className="pl-4 mt-4">
         <h2 className="text-xl font-semibold text-blue-500">My Remainders</h2>
@@ -18,14 +18,13 @@ export default async function MyRemainders() {
     
         {rows.map((event) => {
           console.log(event);
-          console.log(datetime);
           return (
-            <div className="info h-16 w-72 shadow-1xl bg-[#7FC7D9] text-gray-700 rounded-2xl mb-2 flex flex-col justify-center" key={event.id}>
+            <div className="info h-16 w-72 bg-blue-200 text-gray-700 rounded-lg mb-2 flex flex-col justify-center" key={event.eventid}>
               <h4 className="text-lg font-semibold ml-2">{event.name}</h4>
-              <small className="text-sm ml-2">{event.newDate}</small>
-            </div>
-          );
-        })}
+              <small className="text-sm ml-2">{event.date_time}</small>
+              </div>
+              );
+            })}
       </main>
     </div>
   );
