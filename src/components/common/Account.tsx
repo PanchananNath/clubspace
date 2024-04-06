@@ -1,18 +1,17 @@
 "use client";
-import {
-  BsPersonFillAdd,
-  BsPersonCircle,
-  BsFiletypeDoc,
-  BsKey,
-  BsBoxArrowLeft,
-} from "react-icons/bs";
-import React, { useState } from "react";
-import Link from "next/link";
+import { BsPersonFillAdd, BsPersonCircle, BsFiletypeDoc, BsKey, BsBoxArrowLeft } from "react-icons/bs";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/app/firebase";
+import Navbar from "./navbar";
+
 
 export default function Account() {
   const [dropdown1Open, setDropdown1Open] = useState(false);
   const [dropdown2Open, setDropdown2Open] = useState(false);
   const [dropdown3Open, setDropdown3Open] = useState(false);
+  const router = useRouter();
 
   const toggleDropdown = (dropdownId: Number) => {
     switch (dropdownId) {
@@ -30,10 +29,34 @@ export default function Account() {
     }
   };
 
+  useEffect(() =>{
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if(!user) {
+        console.log('user signed out');
+        window.alert('user signed out');
+      }
+      else {
+        window.alert('user not signed out');
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut(); // Sign out the user
+      router.push('/signin')
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   return (
     <div className="w-80  static flex-wrap grid gap-1">
       <div className="h-20 w-80  bg-[#B3DCE9] flex justify-start px-6 items-center rounded-md shadow-md">
+        
         <div className="flex justify-center gap-6 ">
+        <Navbar />
           <BsPersonFillAdd className="text-black" size={40} />
           <div className=" text-black">
             <p className="text-m">UserName</p>
@@ -73,11 +96,11 @@ export default function Account() {
           </p>
         </div>
         {dropdown2Open && (
-          <Link href="./resetpassword">
-            <div className="w-80 bg-[#EAF7F7] grid gap-1 px-6 py-2 text-black text-xs items-center cursor-pointer ">
+          
+            <div onClick={() => router.push('./forgotpassword')} className="w-80 bg-[#EAF7F7] grid gap-1 px-6 py-2 text-black text-xs items-center cursor-pointer ">
               <li className="px-8 py-1 rounded-md hover:bg-[#BDDAD9]">Change Password</li>
             </div>
-          </Link>
+          
         )}
       </div>
 
@@ -98,14 +121,14 @@ export default function Account() {
         )}
       </div>
 
-      <Link href="./login">
-        <div className="w-80 h-12 bg-[#EAF7F7] bg-opacity-85 flex justify-start px-6 items-center rounded-md hover:bg-[#BDDAD9] hover:opacity-100 transition-all duration-300 ease-in-out">
+      
+        <div onClick={handleLogout} className="w-80 h-12 bg-[#EAF7F7] bg-opacity-85 flex justify-start px-6 items-center rounded-md hover:bg-[#BDDAD9] hover:opacity-100 transition-all duration-300 ease-in-out">
           <p className="flex justify-between gap-2 text-sm text-black">
             <BsBoxArrowLeft size={20} />
             Log out
           </p>
         </div>
-      </Link>
+      
     </div>
   );
 }
