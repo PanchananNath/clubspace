@@ -15,7 +15,7 @@ export default function Signup() {
     e.preventDefault(); // Prevent default form submission
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      router.push("/myaccount");
+      router.push("/dashboard");
     } catch (error) {
       console.error('Error registering user:', error);
     }

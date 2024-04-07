@@ -9,6 +9,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '@/app/firebase';
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { getAuth } from "firebase-admin/auth";
 
 
 export default function DashboardPage() {
@@ -18,9 +19,7 @@ export default function DashboardPage() {
   useEffect(() =>{
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if(user) {
-        const uid = user.uid;
-        console.log('user id', user.uid);
-        console.log('user signed in');
+        window.alert('user signed in');
       }
       else {
         window.alert('user not signed in');
