@@ -14,6 +14,8 @@ export interface EventProps {
 }
 
 const Events: React.FC<{ event: EventProps }> = ({ event }) => {
+  const eventdata = event;
+  console.log("EVENTS DATA: ", eventdata);
   return (
     <div className="bg-secondary p-3 m-5 rounded-xl shadow-2xl">
       <div className="flex items-center mb-2">
