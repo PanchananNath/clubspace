@@ -7,34 +7,32 @@ interface PopupFormProps {
 }
 
 interface PopUpFormData {
-  id:string;
+  id: string;
   firstname: string;
   lastname: string;
   email: string;
-  institute: number;
+  institute_id: number;
   module: number;
   semester: number;
-  dept: number;
+  department_id: number;
   linkdin: string;
   phone: string;
 }
 
 const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
-  const [PopUpFormData, setPopUpFormData] = useState<PopUpFormData[]>([]);
-
   const { uid } = useUid();
-  const [iid, setiid] = useState('');
+  const [iid, setiid] = useState<string>('');
   
 
-  const [formdata, setFormdata] = useState<PopUpFormData>({
-    id: iid,
+  const [formData, setFormData] = useState<PopUpFormData>({
+    id: "",
     firstname: "",
     lastname: "",
     email: "",
-    institute: 0,
+    institute_id: 0,
     module: 0,
     semester: 0,
-    dept: 0,
+    department_id: 0,
     linkdin: "",
     phone: "",
   });
@@ -43,60 +41,55 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
     if(uid) {
       setiid(uid);
     }
-    async function fetchPopUpFormData() {
-      await fetch("http://localhost:3000/api/insertdata")
-        .then((res) => res.json())
-        .then((data: PopUpFormData[]) => {
-          return setPopUpFormData(data);
-        })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-        });
-    }
   }, [uid]);
 
   useEffect(() => {
-    setFormdata((prev) => ({
+    setFormData((prev) => ({
       ...prev,
       id: iid || ''
     }));
   }, [iid]);
 
   const handleInputChange = (e: { target: { name: any; value: any } }) => {
-    setFormdata((prev) => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
+
   const handleSubmit = async () => {
-    
+    //console.log(formData);
     try{
-      console.log(formdata);
-      await fetch(
-        '/api/insertdata' , {
-          method: "POST",
-          body: JSON.stringify({
-            id: formdata.id,
-            firstname: formdata.firstname,
-            lastname: formdata.lastname,
-            email: formdata.email,
-            institute: formdata.institute,
-            module: formdata.module,
-            semester: formdata.semester,
-            dept: formdata.dept,
-            linkdin: formdata.linkdin,
-            phone: formdata.phone,
-          }),
-        })
-        .then((res) => {
-          if (res.ok) {
-            window.alert("Success");
+        await fetch(
+          //`/api/insertdata?id=${formData.id}&firstname=${formData.firstname}&lastname=${formData.lastname}&email=${formData.email}&institute=${formData.institute}&module=${formData.module}&semester=${formData.semester}&dept=${formData.dept}&linkedin=${formData.linkdin}&phone=${formData.phone}`
+          'api/insertdata', {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: formData.id,
+              firstname: formData.firstname,
+              lastname: formData.lastname,
+              email: formData.email,
+              insitute: formData.institute_id,
+              module: formData.module,
+              semester: formData.semester,
+              dept: formData.department_id,
+              linkedin: formData.linkdin,
+              phone: formData.phone
+            })
           }
-        })
-        .catch((e) => window.alert(e));
+        )
+          .then((res) => {
+            if (res.ok) {
+              window.alert("Success");
+            }
+          })
+          .catch((e) => window.alert(e));
       } catch (e) {
-      window.alert("Failure");
+        window.alert("Failure");
       }
 
     onClose();
@@ -119,7 +112,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
                 name="firstname"
                 placeholder="Enter your FirstName"
                 autoComplete="firstname"
-                value={formdata.firstname}
+                value={formData.firstname}
                 onChange={handleInputChange}
                 required
                 className="p-2 text-xs rounded-md border"
@@ -132,7 +125,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
                 name="lastname"
                 placeholder="Enter your LastName"
                 autoComplete="lastname"
-                value={formdata.lastname}
+                value={formData.lastname}
                 onChange={handleInputChange}
                 required
                 className="p-2 text-xs rounded-md border"
@@ -145,7 +138,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
                 name="email"
                 placeholder="Enter your Email"
                 autoComplete="email"
-                value={formdata.email}
+                value={formData.email}
                 onChange={handleInputChange}
                 required
                 className="p-2 text-xs rounded-md border"
@@ -155,7 +148,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
               <label className="text-sm text-gray-900">Name of Institute</label>
               <select
                 name="institute"
-                value={formdata.institute}
+                value={formData.institute_id}
                 required
                 onChange={handleInputChange}
                 className="p-2 text-xs rounded-sm border text-gray-600"
@@ -178,7 +171,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
               <label className="text-sm text-gray-900">Program/Module</label>
               <select
                 name="module"
-                value={formdata.module}
+                value={formData.module}
                 required
                 onChange={handleInputChange}
                 className="p-2 text-xs rounded-md border pr-2 text-gray-600"
@@ -196,7 +189,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
               <label className="text-sm text-gray-900">Semester</label>
               <select
                 name="semester"
-                value={formdata.semester}
+                value={formData.semester}
                 required
                 onChange={handleInputChange}
                 className="p-2 text-xs rounded-md border text-gray-600"
@@ -218,7 +211,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
               <label className="text-sm text-gray-900">Branch/Department</label>
               <select
                 name="dept"
-                value={formdata.dept}
+                value={formData.department_id}
                 required
                 onChange={handleInputChange}
                 className="p-2 text-xs rounded-md border text-gray-600"
@@ -241,7 +234,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
                 name="linkdin"
                 placeholder="Linkdin account link"
                 autoComplete="url"
-                value={formdata.linkdin}
+                value={formData.linkdin}
                 required
                 onChange={handleInputChange}
                 className="p-2 text-xs rounded-md border"
@@ -254,7 +247,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
                 name="phone"
                 placeholder="Enter phone number"
                 autoComplete="tel"
-                value={formdata.phone}
+                value={formData.phone}
                 required
                 onChange={handleInputChange}
                 className="p-2 text-xs rounded-md border"

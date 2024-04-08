@@ -17,26 +17,26 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-
+    const { id } = req.query;
     const client = await pool.connect();
 
     // Execute the SQL INSERT query
-    const usersResult = await client.query(
+    const uidResult = await client.query(
       `
-        select * from users
+        select id from users where id = ${id}
       `
     );
 
-    const sturesult = await client.query(
-      `select * from student_data`
-    )
+    // const sturesult = await client.query(
+    //   `select * from student_data`
+    // )
 
-    const users = usersResult.rows;
-    const stu = sturesult.rows;
+    const uid = uidResult.rows;
+    //const stu = sturesult.rows;
 
     client.release();
 
-    res.status(200).json({ users, stu });
+    res.status(200).json(uid);
   } catch (error) {
     console.error("Error retreving dta from PostgreSQL:", error);
     res.status(500).json({ error: "Internal Server Error" });
