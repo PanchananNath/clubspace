@@ -1,13 +1,19 @@
 "use client";
 import { useState } from "react";
+import { Auth, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "@/app/firebase";
-import { sendPasswordResetEmail } from "firebase/auth";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
 
-  const resetEmail = () => {
-    sendPasswordResetEmail(auth, email);
+  const resetEmail = (auth: Auth, email: string) => {
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+      console.log('Password Reset Email Sent');
+    })
+    .catch((error) => {
+      console.log("Error sending Password Reset Email: ", error.message);
+    });
   };
 
   return (
@@ -31,7 +37,7 @@ export default function ForgotPassword() {
             className="p-2 text-sm rounded-lg border w-full"
           />
           <button
-            onClick={() => resetEmail()}
+            onClick={() => resetEmail(auth, email)}
             disabled={!email}
             className="bg-[#365486] test-sm rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"
           >

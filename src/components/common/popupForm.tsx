@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { useUid } from "../../contexts/store";
+import { useUid } from "../../contexts/id";
 
 interface PopupFormProps {
   onClose: () => void;
@@ -59,8 +59,10 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
 
 
   const handleSubmit = async () => {
-    //console.log(formData);
-    try{
+    if(!formData.firstname || !formData.lastname || !formData.email || !formData.institute_id || !formData.module || !formData.semester || !formData.department_id || !formData.linkdin || !formData.phone) {
+      alert("please fill all the detils!");
+    }else{
+      try{
         await fetch(
           'api/insertdata', {
             method: 'POST',
@@ -72,10 +74,10 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
               firstname: formData.firstname,
               lastname: formData.lastname,
               email: formData.email,
-              insitute: formData.institute_id,
+              insitute_id: formData.institute_id,
               module: formData.module,
               semester: formData.semester,
-              dept: formData.department_id,
+              department_id: formData.department_id,
               linkedin: formData.linkdin,
               phone: formData.phone
             })
@@ -93,6 +95,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
 
     onClose();
     onSubmit();
+    }
   };
   
 

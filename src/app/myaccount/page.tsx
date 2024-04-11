@@ -2,44 +2,17 @@
 import Account from "@/components/common/Account";
 import logo from "../../../public/logo.png";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useUid } from "@/contexts/store";
+import Navbar from "@/components/common/navbar";
+import { useEmailAndName } from "@/contexts/emailAndName";
 
 
 export default function myaccount() {
-  const [name, setname] = useState<string | null>('');
-  const { uid } = useUid();
+  const { firstname } = useEmailAndName();
 
-  useEffect(() => {
-    //console.log("uid: ",uid);
-    const fetchid = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3000/api/getdata?id=${uid}`,
-          {
-            method: "GET",
-          }
-        );
-        if (response.ok) {
-          const jsonData = await response.json();
-          if (jsonData.length > 0) {
-            setname(jsonData[0].firstname);
-          }
-        } else {
-          console.error("Error fetching data:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    if (uid) {
-      fetchid();
-    }
-  }, [uid]);
  
   return (
     <main className="flex w-full items-center justify-center p-1">
+      <Navbar />
       <div className="bg-white relative h-screen w-full rounded-2xl bg-static">
         <Image
           alt="Mountains"
@@ -52,7 +25,7 @@ export default function myaccount() {
         />
         
         <div className="px-11 relative mt-16 h-5/6">
-            <h2 className="text-2xl text-[#365486] font-bold">Hello {name}!</h2>
+            <h2 className="text-2xl text-[#365486] font-bold">Hello {firstname}!</h2>
             <div className="bg-[#DCF2F1] h-auto pt-10 p-7 mb-5 z-10  rounded-2xl bg-opacity-70 flex justify-between flex-wrap">
               <div className="">
                 <div className="text-2xl text-[#365486] font-bold mb-4 ">

@@ -23,7 +23,7 @@ export default async function handler(
     // Execute the SQL INSERT query
     const DataResult = await client.query(
       `
-      select id, firstname from users where id='${id}';
+      select id, firstname, lastname, email from users where id='${id}';
       `
     );
 

@@ -5,51 +5,21 @@ import PopupForm from "@/components/common/popupForm";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import Navbar from "@/components/common/navbar";
-import { auth } from "@/app/firebase";
-import { useRouter } from "next/navigation";
-import { useUid } from "@/contexts/store";
 import LoadingSkeleton from "@/components/common/loading";
 import Remainder from "@/components/common/remainder";
 import Calendar from "@/components/common/calendar";
+import { useEmailAndName } from "@/contexts/emailAndName";
+
 
 export default function DashboardPage() {
   const [showPopup, setShowPopup] = useState(false);
-  const [name, setname] = useState<string | null>("");
-  const { uid } = useUid();
-  const router = useRouter();
+  const { id, firstname} = useEmailAndName();
 
   useEffect(() => {
-    //console.log("uid: ",uid);
-    const fetchid = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3000/api/getdata?id=${uid}`,
-          {
-            method: "GET",
-          }
-        );
-        if (response.ok) {
-          const jsonData = await response.json();
-          if (jsonData.length > 0) {
-            console.log("response: ", jsonData[0].id);
-            console.log("firstname: ", jsonData[0].firstname);
-            setname(jsonData[0].firstname);
-          } else {
-            //console.error("Received empty data array");
-            setShowPopup(true);
-          }
-        } else {
-          console.error("Error fetching data:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    if (uid) {
-      fetchid();
+    if(!id) {
+      setShowPopup(true);
     }
-  }, [uid]);
+  }, [id]);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -76,7 +46,7 @@ export default function DashboardPage() {
           />
 
           <div className="px-11 relative mt-16 h-5/6">
-            <h2 className="text-2xl text-[#365486] font-bold">Hello {name}!</h2>
+            <h2 className="text-2xl text-[#365486] font-bold">Hello {firstname}!</h2>
             <div className="bg-[#DCF2F1] h-auto pt-10 p-7 mb-5 z-10  rounded-2xl bg-opacity-70 flex justify-between flex-wrap">
               <div className="">
                 <div className="text-2xl text-[#365486] font-bold mb-4 ">

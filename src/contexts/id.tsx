@@ -24,6 +24,8 @@ export const UidProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         return () => unsubscribe();
     }, []);
 
+    
+
     return (
         <UidContext.Provider value={{ uid }}>
             {children}
