@@ -21,9 +21,9 @@ export default async function handler(
     const client = await pool.connect();
 
     // Execute the SQL INSERT query
-    const uidResult = await client.query(
+    const DataResult = await client.query(
       `
-        select id from users where id = ${id}
+      select id, firstname from users where id='${id}';
       `
     );
 
@@ -31,12 +31,12 @@ export default async function handler(
     //   `select * from student_data`
     // )
 
-    const uid = uidResult.rows;
+    const Data = DataResult.rows;
     //const stu = sturesult.rows;
 
     client.release();
 
-    res.status(200).json(uid);
+    res.status(200).json(Data);
   } catch (error) {
     console.error("Error retreving dta from PostgreSQL:", error);
     res.status(500).json({ error: "Internal Server Error" });

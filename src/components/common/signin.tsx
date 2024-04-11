@@ -46,7 +46,6 @@ export default function Signin() {
         router.push("/dashboard");
       } else {
         console.log("no user signed in");
-        //window.alert("unsuccessfull");
       }
     });
     return () => unsubscribe();

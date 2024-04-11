@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useUid } from "../../contexts/store";
 
 interface PopupFormProps {
@@ -62,7 +62,6 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
     //console.log(formData);
     try{
         await fetch(
-          //`/api/insertdata?id=${formData.id}&firstname=${formData.firstname}&lastname=${formData.lastname}&email=${formData.email}&institute=${formData.institute}&module=${formData.module}&semester=${formData.semester}&dept=${formData.dept}&linkedin=${formData.linkdin}&phone=${formData.phone}`
           'api/insertdata', {
             method: 'POST',
             headers: {
@@ -147,7 +146,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
             <div className="flex flex-col gap-1">
               <label className="text-sm text-gray-900">Name of Institute</label>
               <select
-                name="institute"
+                name="institute_id"
                 value={formData.institute_id}
                 required
                 onChange={handleInputChange}
@@ -210,7 +209,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onClose, onSubmit }) => {
             <div className="flex flex-col gap-1">
               <label className="text-sm text-gray-900">Branch/Department</label>
               <select
-                name="dept"
+                name="department_id"
                 value={formData.department_id}
                 required
                 onChange={handleInputChange}
