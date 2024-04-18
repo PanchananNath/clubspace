@@ -7,8 +7,8 @@ export default async function Clubs() {
   console.log(rows);
 
   return (
-    <main className="flex min-h-screen w-full items-center justify-center p-1">
-      <div className="bg-secondary min-h-full w-full rounded-2xl">
+    <main className="flex h-screen w-full items-center justify-center p-1">
+      <div className="bg-secondary h-full w-full rounded-2xl overflow-y-scroll">
         <div className="bg-slate-100  py- px-">
           <div className="overflow-y-scroll">Clubs</div>
 
