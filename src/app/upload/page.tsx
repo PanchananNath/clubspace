@@ -12,7 +12,8 @@ export default function UploadPage() {
       const yourFileName = fileupload[0].name;
       const fileref = ref(analytics, 'images/' + yourFileName); 
       uploadBytes(fileref, fileupload[0]).then((data)=>{
-        getDownloadURL(data.ref);
+        const url = getDownloadURL(data.ref);
+        console.log("url: ", url);
       })
     }else{
       alert("Please select file");
