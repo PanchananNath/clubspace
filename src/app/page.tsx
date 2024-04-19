@@ -1,10 +1,8 @@
-import Events from "@/components/common/Events";
 import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="flex ">
-     <Events/>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-black">
+     <div className="text-red-500 text-3xl">Club Space</div>
     </main>
   );
 }
