@@ -3,11 +3,12 @@ import Account from "@/components/common/Account";
 import logo from "../../../public/logo.png";
 import Image from "next/image";
 import Navbar from "@/components/common/navbar";
-import { FiSettings } from "react-icons/fi";
 import Calendar from "@/components/common/calendar";
 import Remainder from "@/components/common/remainder";
+import { useEmailAndName } from "@/contexts/emailAndName";
 
-export default function SettingsPage() {
+export default function MyAccountPage() {
+  const {firstname} = useEmailAndName();
   return (
     <main className="flex w-full items-center justify-center p-1">
       <Navbar />
@@ -23,10 +24,8 @@ export default function SettingsPage() {
         />
 
         <div className="px-11 relative mt-16 h-5/6">
-          <div className="flex items-center gap-2">
-            <FiSettings size={20} style={{ fontWeight: '', color: '#365486'}} />
-            <h2 className="text-2xl text-[#365486] font-bold">Settings</h2>
-          </div>
+        <h2 className="text-2xl text-[#365486] font-bold">Hello {firstname}!</h2>
+          
 
           <div className="bg-[#DCF2F1] h-auto pt-10 p-7 mb-5 z-10  rounded-2xl bg-opacity-70 flex justify-between flex-wrap">
               <div className="">
