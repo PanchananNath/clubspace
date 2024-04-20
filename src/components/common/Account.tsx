@@ -1,18 +1,17 @@
 "use client";
 import {
-  BsPersonFillAdd,
   BsPersonCircle,
   BsFiletypeDoc,
   BsKey,
   BsBoxArrowLeft,
 } from "react-icons/bs";
-import React, { useState } from "react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@nextui-org/react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase";
 import { useEmailAndName } from "@/contexts/emailAndName";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Account() {
   const [dropdown1Open, setDropdown1Open] = useState(false);
@@ -62,42 +61,9 @@ export default function Account() {
     <div className="w-80  static flex-wrap grid gap-1">
       <div className="h-20 w-80  bg-[#80bed1] flex justify-start px-6 items-center rounded-md shadow-md">
         <div className="flex items-center gap-3">
-          {/* <button className="rounded-full w-14 h-14">
+          <button className="rounded-full w-14 h-14">
             <Image src={logo} alt={"Profile pic"} className="rounded-full" />
-          </button> */}
-          <div className="w-14 h-14 rounded-full">
-      <Dropdown placement="bottom-end">
-        <DropdownTrigger>
-          <Avatar
-            isBordered
-            as="button"
-            className="transition-transform w-14 h-14 rounded-full"
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-          />
-        </DropdownTrigger>
-        <DropdownMenu aria-label="Profile Actions" variant="flat">
-          <DropdownItem key="profile" className="h-14 gap-2">
-            <p className="font-semibold">Signed in as</p>
-            <p className="font-semibold">zoey@example.com</p>
-          </DropdownItem>
-          <DropdownItem key="settings">
-            My Settings
-          </DropdownItem>
-          <DropdownItem key="team_settings">Team Settings</DropdownItem>
-          <DropdownItem key="analytics">
-            Analytics
-          </DropdownItem>
-          <DropdownItem key="system">System</DropdownItem>
-          <DropdownItem key="configurations">Configurations</DropdownItem>
-          <DropdownItem key="help_and_feedback">
-            Help & Feedback
-          </DropdownItem>
-          <DropdownItem key="logout" color="danger">
-            Log Out
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-      </div>
+          </button>
           <div className=" text-black">
             <p className="text-md">
               {firstname} {lastname}

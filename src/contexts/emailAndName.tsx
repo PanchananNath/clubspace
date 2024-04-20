@@ -29,11 +29,12 @@ export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
   const [firstname, setfirstname] = useState<string | null>(null);
   const [lastname, setlastname] = useState<string | null>(null);
   const [email, setemail] = useState<string | null>(null);
+  //const [dataFetched, setDataFetched] = useState(false);
   const { uid } = useUid();
 
   useEffect(() => {
     //console.log("uid: ",uid);
-    const fetchid = async () => {
+    const fetchdata = async () => {
       try {
         const response = await fetch(
           `http://localhost:3000/api/getdata?id=${uid}`,
@@ -46,11 +47,12 @@ export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
           if (jsonData.length > 0) {
             console.log("response: ", jsonData[0].id);
             console.log("firstname: ", jsonData[0].firstname);
-            setid(jsonData[0].id);
-            setfirstname(jsonData[0].firstname);
-            setlastname(jsonData[0].lastname);
-            setemail(jsonData[0].email);
-            
+            const {id, firstname, lastname, email } = jsonData[0];
+            setid(id);
+            setfirstname(firstname);
+            setlastname(lastname);
+            setemail(email);
+            //setDataFetched(true);
           }
         } else {
           console.error("Error fetching data:", response.statusText);
@@ -61,12 +63,12 @@ export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
     };
 
     if (uid) {
-      fetchid();
+      fetchdata();
     }
   }, [uid]);
 
   return (
-    <EmailAndNameContext.Provider value={{ firstname, lastname, email, id }}>
+    <EmailAndNameContext.Provider value={{ id, firstname, lastname, email }}>
       {children}
     </EmailAndNameContext.Provider>
   );
