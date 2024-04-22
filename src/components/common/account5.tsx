@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-
 import { MdEvent } from "react-icons/md";
 import { TbBell } from "react-icons/tb";
 import { FaUser, FaPhone } from "react-icons/fa";
