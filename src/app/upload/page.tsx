@@ -6,6 +6,7 @@ import ChangeUserName from "@/components/common/changeUserName";
 import AddPhone from "@/components/common/addPhone";
 import UpdateEmail from "@/components/common/updateEmail";
 import UpdatePassword from "@/components/common/updatePassword";
+import UpdateResume from "@/components/common/updateResume";
 
 
 export default function UploadPage() {
@@ -33,10 +34,7 @@ export default function UploadPage() {
       ></input>
 
       <button onClick={upload}>upload</button>
-      <AddPhone/>
-      <UpdateEmail/>
-      <ChangeUserName/>
-      <UpdatePassword/>
+      <UpdateResume/>
     </div>
   );
 }

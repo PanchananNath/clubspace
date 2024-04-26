@@ -7,11 +7,19 @@ import { useEmailAndName } from "@/contexts/emailAndName";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import { ImProfile } from "react-icons/im";
+import ChangeUserNamet from "./changeUserName";
+import UpdateEmail from "./updateEmail";
+import UpdatePhone from "./addPhone";
+import ChangeProfilePic from "./changeProfilePic";
+import UpdatePassword from "./updatePassword";
+import UpdateResume from "./updateResume";
 
 export default function Account() {
   const [dropdown1Open, setDropdown1Open] = useState(false);
   const [dropdown2Open, setDropdown2Open] = useState(false);
   const [dropdown3Open, setDropdown3Open] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const [clickValue, setClickValue] = useState<Number>(0);
   const { firstname, lastname, email } = useEmailAndName();
   const router = useRouter();
 
@@ -31,6 +39,22 @@ export default function Account() {
     }
   };
 
+  const toggleComponents = (clickValue: Number) => {
+    switch (clickValue) {
+      case 1: return  <ChangeUserNamet/>;
+      case 2: return <UpdateEmail/> ;
+      case 3: return <UpdatePhone/> ;
+      case 4: return <ChangeProfilePic/> ;
+      case 5: return <UpdatePassword/> ;
+      case 6: return <UpdateResume/> ;
+    }
+  }
+
+  const handleClick = () => {
+    setClicked(true);
+  }
+
+ 
   const handleLogout = async () => {
     try {
       await auth.signOut(); // Sign out the user
@@ -55,103 +79,142 @@ export default function Account() {
           </div>
         </div>
       </div>
-      <div className="w-80 ">
-        <div
-          onClick={() => toggleDropdown(1)}
-          className={`w-80 h-12 ${
-            dropdown1Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
-          } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
-            !dropdown1Open
-              ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
-              : ""
-          }`}
-        >
-          <p className=" flex justify-between gap-2 text-sm text-black">
-            <BsPersonCircle size={20} />
-            Personal Details
-          </p>
-        </div>
 
-        {dropdown1Open && (
-          <div className="w-80 bg-[#B3DCE9]  grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md">
-            <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
-              Change Username
-            </li>
-            <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
-              Update Email
-            </li>
-            <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
-              Add Phone Number
-            </li>
-            <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
-              Change Profile Pic
-            </li>
-          </div>
-        )}
-      </div>
-
-      <div className="">
-        <div
-          onClick={() => toggleDropdown(2)}
-          className={`w-80 h-12 ${
-            dropdown2Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
-          } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
-            !dropdown2Open
-              ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
-              : ""
-          }`}
-        >
-          <p className="flex justify-between gap-2 text-sm text-black">
-            <BsKey size={20} />
-            Security Settings
-          </p>
-        </div>
-        {dropdown2Open && (
+      {clicked ? toggleComponents(clickValue) : 
+      <div className="w-80 grid gap-1">
+        <div >
           <div
-            onClick={() => router.push("./forgotpassword")}
-            className="w-80 bg-[#B3DCE9] grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md"
+            onClick={() => toggleDropdown(1)}
+            className={`w-80 h-12 ${
+              dropdown1Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
+            } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
+              !dropdown1Open
+                ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
+                : ""
+            }`}
           >
-            <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
-              Change Password
-            </li>
+            <p className=" flex justify-between gap-2 text-sm text-black">
+              <BsPersonCircle size={20} />
+              Personal Details
+            </p>
           </div>
-        )}
-      </div>
 
-      <div className="relative">
+          {dropdown1Open && (
+            <div className="w-80 bg-[#B3DCE9]  grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md">
+              <li
+                onClick={() => {
+                  setClickValue(1);
+                  setClicked(true);
+                }}
+                
+                className="px-8 py-1 rounded-md hover:bg-[#80bed1]"
+              >
+                Change Username
+              </li>
+              <li 
+              onClick={() => {
+                setClickValue(2);
+                setClicked(true);
+              }}
+              className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
+                Update Email
+              </li>
+              <li
+              onClick={() => {
+                setClickValue(3);
+                setClicked(true);
+              }}
+              className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
+                Add Phone Number
+              </li>
+              <li 
+              onClick={() => {
+                setClickValue(4);
+                setClicked(true);
+              }}
+              className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
+                Change Profile Pic
+              </li>
+            </div>
+          )}
+        </div>
+
+        <div className="">
+          <div
+            onClick={() => toggleDropdown(2)}
+            className={`w-80 h-12 ${
+              dropdown2Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
+            } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
+              !dropdown2Open
+                ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
+                : ""
+            }`}
+          >
+            <p className="flex justify-between gap-2 text-sm text-black">
+              <BsKey size={20} />
+              Security Settings
+            </p>
+          </div>
+          {dropdown2Open && (
+            <div
+              onClick={() => router.push("./forgotpassword")}
+              className="w-80 bg-[#B3DCE9] grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md"
+            >
+              <li 
+              onClick={() => {
+                setClickValue(5);
+                setClicked(true);
+              }}
+              className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
+                Change Password
+              </li>
+            </div>
+          )}
+        </div>
+
+        <div className="relative">
+          <div
+            onClick={() => toggleDropdown(3)}
+            className={`w-80 h-12 ${
+              dropdown3Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
+            } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
+              !dropdown3Open
+                ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
+                : ""
+            }`}
+          >
+            <p className="flex justify-between gap-2 text-sm text-black">
+              <ImProfile size={20} />
+              Resume
+            </p>
+          </div>
+          {dropdown3Open && (
+            <div className="w-80 bg-[#B3DCE9] grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md">
+              <li 
+              onClick={() => {
+                setClickValue(6);
+                setClicked(true);
+              }}
+              className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
+                Update Resume
+              </li>
+            </div>
+          )}
+        </div>
+
         <div
-          onClick={() => toggleDropdown(3)}
-          className={`w-80 h-12 ${
-            dropdown3Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
-          } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
-            !dropdown3Open
-              ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
-              : ""
-          }`}
+          onClick={handleLogout}
+          className="w-80 h-12 bg-[#B3DCE9] bg-opacity-85 flex justify-start px-6 items-center rounded-md hover:bg-[#80bed1] hover:opacity-100 transition-all duration-300 ease-in-out"
         >
           <p className="flex justify-between gap-2 text-sm text-black">
-            <ImProfile size={20} />
-            Resume
+            <BsBoxArrowLeft size={20} />
+            Log out
           </p>
         </div>
-        {dropdown3Open && (
-          <div className="w-80 bg-[#B3DCE9] grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md">
-            <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
-              Update Resume
-            </li>
-          </div>
-        )}
-      </div>
+        
+      </div>}
 
-      <div
-        onClick={handleLogout}
-        className="w-80 h-12 bg-[#B3DCE9] bg-opacity-85 flex justify-start px-6 items-center rounded-md hover:bg-[#80bed1] hover:opacity-100 transition-all duration-300 ease-in-out"
-      >
-        <p className="flex justify-between gap-2 text-sm text-black">
-          <BsBoxArrowLeft size={20} />
-          Log out
-        </p>
-      </div>
+      
     </div>
   );
 }
