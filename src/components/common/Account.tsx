@@ -7,7 +7,7 @@ import { useEmailAndName } from "@/contexts/emailAndName";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import { ImProfile } from "react-icons/im";
-import ChangeUserNamet from "./changeUserName";
+import ChangeUserName from "./changeUserName";
 import UpdateEmail from "./updateEmail";
 import UpdatePhone from "./addPhone";
 import ChangeProfilePic from "./changeProfilePic";
@@ -39,16 +39,20 @@ export default function Account() {
     }
   };
 
-  const toggleComponents = (clickValue: Number) => {
+  const toggleComponents = (clickValue: Number, toggleBackToMain: () => void) => {
     switch (clickValue) {
-      case 1: return  <ChangeUserNamet/>;
-      case 2: return <UpdateEmail/> ;
-      case 3: return <UpdatePhone/> ;
-      case 4: return <ChangeProfilePic/> ;
-      case 5: return <UpdatePassword/> ;
-      case 6: return <UpdateResume/> ;
+      case 1: return  <ChangeUserName toggleBackToMain={toggleBackToMain}/>;
+      case 2: return <UpdateEmail toggleBackToMain={toggleBackToMain}/> ;
+      case 3: return <UpdatePhone toggleBackToMain={toggleBackToMain}/> ;
+      case 4: return <ChangeProfilePic toggleBackToMain={toggleBackToMain}/> ;
+      //case 5: return <UpdatePassword toggleBackToMain={toggleBackToMain}/> ;
+      case 6: return <UpdateResume toggleBackToMain={toggleBackToMain}/> ;
     }
-  }
+  };
+
+  const toggleBackToMain = () => {
+    setClicked(false); // Set clicked back to false to render the main component
+  };
 
   const handleClick = () => {
     setClicked(true);
@@ -80,7 +84,7 @@ export default function Account() {
         </div>
       </div>
 
-      {clicked ? toggleComponents(clickValue) : 
+      {clicked ? toggleComponents(clickValue, toggleBackToMain) : 
       <div className="w-80 grid gap-1">
         <div >
           <div
@@ -162,7 +166,7 @@ export default function Account() {
             >
               <li 
               onClick={() => {
-                setClickValue(5);
+                // setClickValue(5);
                 setClicked(true);
               }}
               className="px-8 py-1 rounded-md hover:bg-[#80bed1]">

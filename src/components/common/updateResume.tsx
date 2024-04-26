@@ -2,12 +2,19 @@
 import { FaFileUpload } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-export default function UpdateResume() {
+type ToggleBackToMainFunction = () => void;
+
+interface UpdateResumeProps {
+  toggleBackToMain: ToggleBackToMainFunction;
+}
+
+
+const UpdateResume: React.FC<UpdateResumeProps> = ({toggleBackToMain}) => {
   return (
     <div className="w-80 h-60 bg-[#B3DCE9] rounded-lg">
       <div className="w-80 h-12 bg-[#80bed1] bg-opacity-85 flex justify-start px-3 items-center shadow-lg rounded-lg">
         <div className="flex justify-center items-center ">
-          <button className="rounded-full hover:bg-[#6AABD2] p-2">
+          <button onClick={toggleBackToMain} className="rounded-full hover:bg-[#6AABD2] p-2">
             <IoMdArrowRoundBack size={20} />
           </button>
           <p className="ml-1 flex justify-between text-sm text-black">
@@ -31,3 +38,5 @@ export default function UpdateResume() {
     </div>
   );
 }
+
+export default UpdateResume;
