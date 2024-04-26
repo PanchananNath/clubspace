@@ -42,7 +42,7 @@ export default function DashboardPage() {
             quality={100}
             fill
             sizes="100vw"
-            className="fixed top-0 left-0 w-full h-full -z-0 object-contain opacity-80 pt-5"
+            className="fixed top-0 left-0 w-full h-full -z-0 object-contain opacity-90 pt-5"
           />
 
           <div className="px-11 relative mt-16 h-5/6">

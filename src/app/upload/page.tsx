@@ -2,6 +2,11 @@
 import { useState } from "react";
 import { analytics } from "../firebase";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import ChangeUserName from "@/components/common/changeUserName";
+import AddPhone from "@/components/common/addPhone";
+import UpdateEmail from "@/components/common/updateEmail";
+import UpdatePassword from "@/components/common/updatePassword";
+
 
 export default function UploadPage() {
   const [fileupload, setfileupload] = useState<FileList | null>(null);
@@ -28,6 +33,10 @@ export default function UploadPage() {
       ></input>
 
       <button onClick={upload}>upload</button>
+      <AddPhone/>
+      <UpdateEmail/>
+      <ChangeUserName/>
+      <UpdatePassword/>
     </div>
   );
 }

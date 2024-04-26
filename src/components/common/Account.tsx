@@ -1,17 +1,12 @@
 "use client";
-import {
-  BsPersonCircle,
-  BsFiletypeDoc,
-  BsKey,
-  BsBoxArrowLeft,
-} from "react-icons/bs";
+import { BsPersonCircle, BsKey, BsBoxArrowLeft } from "react-icons/bs";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth } from "@/app/firebase";
 import { useEmailAndName } from "@/contexts/emailAndName";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
-import { onAuthStateChanged } from "firebase/auth";
+import { ImProfile } from "react-icons/im";
 
 export default function Account() {
   const [dropdown1Open, setDropdown1Open] = useState(false);
@@ -35,18 +30,6 @@ export default function Account() {
         break;
     }
   };
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (!user) {
-  //       console.log("user signed out");
-  //       window.alert("user signed out");
-  //     } else {
-  //       window.alert("user not signed out");
-  //     }
-  //   });
-  //   return () => unsubscribe();
-  // }, []);
 
   const handleLogout = async () => {
     try {
@@ -75,7 +58,13 @@ export default function Account() {
       <div className="w-80 ">
         <div
           onClick={() => toggleDropdown(1)}
-          className="w-80 h-12 bg-[#B3DCE9] bg-opacity-85 flex justify-start px-6 items-center cursor-pointer rounded-md hover:bg-[#80bed1] hover:opacity-100 transition-all duration-300 ease-in-out"
+          className={`w-80 h-12 ${
+            dropdown1Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
+          } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
+            !dropdown1Open
+              ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
+              : ""
+          }`}
         >
           <p className=" flex justify-between gap-2 text-sm text-black">
             <BsPersonCircle size={20} />
@@ -84,7 +73,7 @@ export default function Account() {
         </div>
 
         {dropdown1Open && (
-          <div className="w-80 bg-[#B3DCE9]  grid gap-1 px-6 py-2 text-black text-xs items-center cursor-pointer ">
+          <div className="w-80 bg-[#B3DCE9]  grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md">
             <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
               Change Username
             </li>
@@ -104,7 +93,13 @@ export default function Account() {
       <div className="">
         <div
           onClick={() => toggleDropdown(2)}
-          className="w-80 h-12 bg-[#B3DCE9] bg-opacity-85 flex justify-start px-6 items-center rounded-md cursor-pointer  hover:bg-[#80bed1] hover:opacity-100 transition-all duration-300 ease-in-out"
+          className={`w-80 h-12 ${
+            dropdown2Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
+          } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
+            !dropdown2Open
+              ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
+              : ""
+          }`}
         >
           <p className="flex justify-between gap-2 text-sm text-black">
             <BsKey size={20} />
@@ -114,7 +109,7 @@ export default function Account() {
         {dropdown2Open && (
           <div
             onClick={() => router.push("./forgotpassword")}
-            className="w-80 bg-[#B3DCE9] grid gap-1 px-6 py-2 text-black text-xs items-center cursor-pointer "
+            className="w-80 bg-[#B3DCE9] grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md"
           >
             <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
               Change Password
@@ -126,15 +121,21 @@ export default function Account() {
       <div className="relative">
         <div
           onClick={() => toggleDropdown(3)}
-          className="w-80 h-12 bg-[#B3DCE9] bg-opacity-85 flex justify-start px-6 items-center rounded-md  cursor-pointer hover:bg-[#80bed1] hover:opacity-100 transition-all duration-300 ease-in-out"
+          className={`w-80 h-12 ${
+            dropdown3Open ? "bg-[#80bed1] rounded-t-md" : "bg-[#B3DCE9]"
+          } bg-opacity-85 flex justify-start px-6 items-center cursor-pointer${
+            !dropdown3Open
+              ? " hover:bg-[#80bed1] rounded-md hover:opacity-100 transition-all duration-300 ease-in-out"
+              : ""
+          }`}
         >
           <p className="flex justify-between gap-2 text-sm text-black">
-            <BsFiletypeDoc size={20} />
+            <ImProfile size={20} />
             Resume
           </p>
         </div>
         {dropdown3Open && (
-          <div className="w-80 bg-[#B3DCE9] grid gap-1 px-6 py-2 text-black text-xs items-center cursor-pointer">
+          <div className="w-80 bg-[#B3DCE9] grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md">
             <li className="px-8 py-1 rounded-md hover:bg-[#80bed1]">
               Update Resume
             </li>
@@ -154,7 +155,3 @@ export default function Account() {
     </div>
   );
 }
-
-//bg-[#B3DCE9]
-
-
