@@ -1,5 +1,5 @@
 import NavBar from "@/components/common/navBar";
-import MyClubs from "@/components/myClubs/myClubs";
+import MyClubs from "@/components/myClubs1/myClubs";
 import Image from "next/image";
 
 export default function Home() {
