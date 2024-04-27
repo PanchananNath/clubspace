@@ -38,6 +38,10 @@ const Account = () => {
   const router = useRouter();
 
   const toggleDropdown = (dropdown: DropdownState) => {
+    if(dropdownOpen === dropdown) {
+      setDropdownOpen(DropdownState.none);
+      return;
+    }
     setDropdownOpen(dropdown);
   };
   
