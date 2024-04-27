@@ -14,17 +14,24 @@ import ChangeProfilePic from "./changeProfilePic";
 import UpdatePassword from "./updatePassword";
 import UpdateResume from "./updateResume";
 import DropdownItem from "./dropdownItem";
+import { Icon } from "next/dist/lib/metadata/types/metadata-types";
+import { dropdown } from "@nextui-org/react";
 
+interface DropdownType {
+  id: number;
+  text: string;
+  icon: any;
+}
 
 const Account = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState<DropdownType | null> (null);
   const [clicked, setClicked] = useState(false);
   const [clickValue, setClickValue] = useState(0);
   const { firstname, lastname, email } = useEmailAndName();
   const router = useRouter();
 
-  const toggleDropdown = (dropdownId: number | null) => {
-    setDropdownOpen(dropdownId === dropdownOpen ? null : dropdownId);
+  const toggleDropdown = (dropdown: DropdownType) => {
+    setDropdownOpen(dropdown);
   };
   
   const handleDropdownItemClick = (value: React.SetStateAction<number>) => {
@@ -46,7 +53,7 @@ const Account = () => {
     setClicked(false);
   };
 
-  const dropdownItems = [
+  const dropdownItems : DropdownType[] = [
     { id: 1, text: "Personal Details", icon: <BsPersonCircle size={20}/> },
     { id: 2, text: "Security Settings", icon: <BsKey size={20}/> },
     { id: 3, text: "Resume", icon: <ImProfile size={20}/> },
@@ -85,8 +92,8 @@ const Account = () => {
               key={item.id}
               text={item.text}
               icon={item.icon}
-              isOpen={dropdownOpen === item.id}
-              onClick={() => toggleDropdown(item.id)}
+              isOpen={item === dropdownOpen}
+              onClick={() => toggleDropdown(item)}
             >
               {item.id === 1 && (
                 <div className="w-80 bg-[#B3DCE9]  grid gap-1 px-4 py-2 text-black text-xs items-center cursor-pointer rounded-b-md ">
