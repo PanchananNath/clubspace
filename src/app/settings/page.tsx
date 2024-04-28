@@ -1,9 +1,8 @@
-export default function Settings() {
+
+export default function SettingsPage() {
   return (
-    <main className="flex min-h-screen w-full items-center justify-center p-1">
-      <div className="bg-secondary h-full w-full rounded-2xl flex justify-center">
-        <div className="self-center text-2xl font-bold">Settings</div>
-      </div>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-black">
+     <div className="text-red-500 text-3xl">Settings Page</div>
     </main>
   );
 }

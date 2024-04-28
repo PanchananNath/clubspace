@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/common/SideBar";
+import { UidProvider } from "@/contexts/id";
+import { EmailAndNameProvider } from "@/contexts/emailAndName";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SideBar />
-        {children}
+        <UidProvider>
+          <EmailAndNameProvider>
+            <main>
+              <SideBar />
+              {children}
+            </main>
+          </EmailAndNameProvider>
+        </UidProvider>
       </body>
     </html>
   );
