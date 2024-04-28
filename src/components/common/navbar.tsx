@@ -3,13 +3,7 @@ import Image from "next/image";
 import ProfilePic from "../../../public/profilePic.jpeg";
 import { MdEvent } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
+
 import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 
@@ -40,7 +34,7 @@ export default function Navbar() {
             </button>
           </div>
           <div className="rounded-full">
-            <Dropdown>
+            {/* <Dropdown>
               <DropdownTrigger>
                 <Button variant="bordered">
                   <Image
@@ -57,7 +51,7 @@ export default function Navbar() {
                 <DropdownItem key="copy" className="hover:bg-[#c6cccf] mt-1 rounded-sm" onClick={() => router.push("./settings")}>Settings</DropdownItem>
                 <DropdownItem key="edit" className="hover:bg-[#c6cccf] mt-1 rounded-sm" onClick={handleLogout}>Log out</DropdownItem>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
       </div>
