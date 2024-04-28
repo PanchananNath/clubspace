@@ -23,7 +23,7 @@ export default function SideBar() {
 
   return (
     <>
-      <aside className="h-screen w-full sm:w-64 flex flex-col bg-primary sm:flex-row hidden sm:block">
+      <aside className="h-screen w-full sm:w-1/6 sm:flex flex-col bg-primary sm:flex-row hidden ">
         <nav className="h-full w-full sm:w-64 flex flex-col bg-primary">
           <div className="p-4 mb-10 flex items-center text-white font-extrabold text-2xl">
             <Image
@@ -116,7 +116,7 @@ export default function SideBar() {
           </ul>
         </nav>
       </aside>
-      <nav className="fixed bottom-0 inset-x-0 h-16 bg-primary block sm:hidden flex items-center justify-around">
+      <nav className="fixed bottom-0 inset-x-0 h-16 bg-primary sm:hidden flex items-center justify-around">
         <button onClick={() => setActiveTab(Tabs.dashboard)}>Dashboard</button>
         <button onClick={() => setActiveTab(Tabs.events)}>Events</button>
         <button onClick={() => setActiveTab(Tabs.allclubs)}>All Clubs</button>
