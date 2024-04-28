@@ -25,7 +25,10 @@ export default async function getEventWithAttendees(
 
     // const body = JSON.parse(req.body)
     // const  id = body.id
-    const { id, name, amount, email } = req.query;
+
+    const {id,name,amount,email } = req.query
+
+
 
     // const id = 1;
     console.log("ID:", id);
@@ -35,7 +38,9 @@ export default async function getEventWithAttendees(
     // Get the event details
     const eventResult = await client.query(
       `INSERT INTO DEMO (id,name,amount,email) VALUES ($1,$2,$3,$4)`,
-      [id, name, amount, email]
+
+      [id,name,amount,email]
+
     );
     const event = eventResult.rows;
 

@@ -1,3 +1,8 @@
+
+import Skeleton from "@/components/skeleton";
+import SpinnerMy from "@/components/spinner";
+
+
 interface DemoData {
   [x: string]: any;
   id: number;
@@ -12,7 +17,9 @@ export default async function Demo() {
   )
     .then((res) => res.json()) // Assuming the response is JSON
     .then((data) => {
-      console.log(data);
+
+        console.log(data)
+
       // Assuming the response matches the shape of DemoData
       return data;
     })

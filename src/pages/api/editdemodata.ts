@@ -25,7 +25,9 @@ export default async function getEventWithAttendees(
 
     // const body = JSON.parse(req.body)
     // const  id = body.id
-    const { id, name, amount, email } = req.query;
+    const {id,name,amount,email } = req.query
+
+
 
     // const id = 1;
     console.log("ID:", id);
@@ -35,7 +37,9 @@ export default async function getEventWithAttendees(
     // Get the event details
     const eventResult = await client.query(
       `UPDATE DEMO set name=$1 , amount=$2, email=$3 where id=$4`,
-      [name, amount, email, id]
+
+      [name,amount,email,id]
+
     );
     const event = eventResult.rows;
 
