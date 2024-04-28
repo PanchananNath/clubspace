@@ -12,35 +12,42 @@ interface DemoData {
 }
 
 export default function Demo() {
+
   // calcualtion and operations
   const [demoData, setDemoData] = useState<DemoData[]>([]);
 
   const [formdata, SetFormdata] = useState<DemoData>({
+
     id: 0,
     name: "",
     amount: 0,
     email: "",
   });
+
   const [refresh, setRefresh] = useState<number>(0);
 
   const [loading, setLoading] = useState<boolean>(false);
 
   const [dataloading, setDataLoading] = useState<boolean>(true);
 
+
   useEffect(() => {
     async function fetchDemoData() {
       await fetch("http://localhost:3000/api/getdemodata")
         .then((res) => res.json()) // Assuming the response is JSON
         .then((data: DemoData[]) => {
+
            
           // Assuming the response matches the shape of DemoData
           return setDemoData(data);
+
 
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
           // Handle error
         });
+
         setDataLoading(false);
     }
     fetchDemoData();
@@ -100,11 +107,14 @@ export default function Demo() {
     } catch (e) {
       setLoading(false);
       window.alert("Failure");
+
     }
   };
 
   return (
+
     <div className="min-h-screen bg-slate-100 flex  flex-col justify-center items-center text-black text-3xl">
+
       <div className="text-3xl text-black">Hello World!!</div>
       <div className="space-y-5">
         <div className="flex space-x-5">
@@ -113,6 +123,7 @@ export default function Demo() {
           <div>Amount</div>
           <div>Email</div>
         </div>
+
         {dataloading && <div className="flex"><Skeleton/></div>}
         {demoData && demoData.map((item) => {
           return (
@@ -194,6 +205,7 @@ export default function Demo() {
               <div>Edit</div>
             </button>
           )}
+
         </div>
       </div>
     </div>

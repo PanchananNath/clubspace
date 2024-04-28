@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Pool } from "pg";
 
+
 // Create a PostgreSQL connection pool
+
 const pool = new Pool({
   user: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
@@ -13,8 +15,10 @@ const pool = new Pool({
   },
 });
 
+
 // Define the API route handler to get an event along with its attendees' names and photos
 export default async function getEventWithAttendees(
+
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -39,5 +43,6 @@ export default async function getEventWithAttendees(
   } catch (error) {
     console.error("Error retrieving data from PostgreSQL:", error);
     res.status(500).json({ error: "Internal Server Error" });
+
   }
 }
