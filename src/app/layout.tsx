@@ -4,7 +4,7 @@ import "./globals.css";
 import { UidProvider } from "@/contexts/id";
 import { EmailAndNameProvider } from "@/contexts/emailAndName";
 import SideBar from "@/components/common/SideBar";
-
+import "/src/components/style.css"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
