@@ -7,15 +7,16 @@ export default async function Clubs() {
   console.log(rows);
 
   return (
-    <main className="flex h-screen w-full items-center justify-center p-1">
-      <div className="bg-secondary h-full w-full rounded-2xl overflow-y-scroll">
-        <div className="bg-slate-100  py- px-">
-          <div className="overflow-y-scroll">Clubs</div>
+    <main className="flex bg-secondary  h-screen w-full items-center justify-center p-5">
+      <div className="h-full w-full rounded-2xl overflow-y-scroll">
+        <div className=" py- px-">
+          <div className="text-3xl font-bold w-full text-center my-5 ">Clubs</div>
+          <div className="grid grid-cols-3 gap-5">
 
           {rows.map((item) => {
             console.log(item);
             return (
-              <div className="w-64" key={item.id}>
+              <div className=" " key={item.id}>
                 <CustomCard
                   title={item.name}
                   description={item.about}
@@ -24,6 +25,7 @@ export default async function Clubs() {
               </div>
             );
           })}
+          </div>
         </div>
       </div>
     </main>
