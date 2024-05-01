@@ -49,7 +49,7 @@ export default function Signin() {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [router]);
 
   return (
     <div className="bg-gray-50 px-10 py-3 w-96">
@@ -144,7 +144,7 @@ export default function Signin() {
 
       <div className="text-xs text-black flex justify-center mt-1">
         <p>
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <button
             onClick={() => router.push("/signup")}
             className="text-blue-700 hover:cursor-pointer"

@@ -17,7 +17,7 @@ interface RequestBody {
   download_url: string;
 }
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function insertDownloadUrl(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     try {
       const { id, download_url }: RequestBody = req.body;

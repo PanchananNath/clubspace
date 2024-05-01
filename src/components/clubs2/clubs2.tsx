@@ -26,7 +26,7 @@ export default function AllClubs() {
                         <div id="content" className="w-auto h-auto grid grid-cols-2 grid-rows-2 gap-4">
                             <div className="box1 h-auto bg-sky-200 rounded-lg p-4">
                                     <div id="header" className="flex gap-5 h-20 mb-5">
-                                        <img className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/D4D0BAQG2bvQZMpjKYg/company-logo_200_200/0/1694538299913?e=2147483647&v=beta&t=fi17Jf6UUNfZ71eKp423YRBslxeq25h66MCiYQ7O5CI" alt="logo" />
+                                        <Image className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/D4D0BAQG2bvQZMpjKYg/company-logo_200_200/0/1694538299913?e=2147483647&v=beta&t=fi17Jf6UUNfZ71eKp423YRBslxeq25h66MCiYQ7O5CI" alt="logo" />
                                         <h2 className="mt-6 font-bold text-xl text-gray-700 cursor-pointer">Cyber Security Club</h2>
                                     </div>
                 
@@ -45,7 +45,7 @@ export default function AllClubs() {
                             </div>
                             <div className="box2 h-auto bg-sky-200 rounded-lg p-4">
                                     <div id="header" className="flex gap-5 h-20 mb-5">
-                                        <img className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/D5603AQFlFq9BFDVOFQ/profile-displayphoto-shrink_200_200/0/1693930664921?e=2147483647&v=beta&t=EVGhxHvTzgLDZIfikFhvTJso1QY_s1NSKexivqFT-Vw" alt="logo" />
+                                        <Image className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/D5603AQFlFq9BFDVOFQ/profile-displayphoto-shrink_200_200/0/1693930664921?e=2147483647&v=beta&t=EVGhxHvTzgLDZIfikFhvTJso1QY_s1NSKexivqFT-Vw" alt="logo" />
                                         <h2 className="mt-6 font-bold text-xl text-gray-700 cursor-pointer">AI Club</h2>
                                     </div>
                 
@@ -64,7 +64,7 @@ export default function AllClubs() {
                             </div>
                             <div className="box3 h-auto bg-sky-200 rounded-lg p-4">
                                     <div id="header" className="flex gap-5 h-20 mb-5">
-                                        <img className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/C560BAQEcHD6UhiBLmw/company-logo_200_200/0/1648636313082?e=2147483647&v=beta&t=kRpSSF8WI3nB7E0ZmAoPAHsw0hbyB12lj847jjpEluc" alt="logo" />
+                                        <Image className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/C560BAQEcHD6UhiBLmw/company-logo_200_200/0/1648636313082?e=2147483647&v=beta&t=kRpSSF8WI3nB7E0ZmAoPAHsw0hbyB12lj847jjpEluc" alt="logo" />
                                         <h2 className="mt-6 font-bold text-xl text-gray-700 cursor-pointer">Development Club</h2>
                                     </div>
                 
@@ -83,7 +83,7 @@ export default function AllClubs() {
                             </div>
                             <div className="box4 h-auto bg-sky-200 rounded-lg p-4">
                                     <div id="header" className="flex gap-5 h-20 mb-5">
-                                        <img className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/D4D0BAQH75h8HyOspjg/company-logo_200_200/0/1686467713588?e=1717632000&v=beta&t=ljCofR7YmREpH8QTbJtlySQfcJv-zWzslIg2abB0PmM" alt="logo" />
+                                        <Image className="w-20 h-20 rounded-md cursor-pointer" src="https://media.licdn.com/dms/image/D4D0BAQH75h8HyOspjg/company-logo_200_200/0/1686467713588?e=1717632000&v=beta&t=ljCofR7YmREpH8QTbJtlySQfcJv-zWzslIg2abB0PmM" alt="logo" />
                                         <h2 className="mt-6 font-bold text-xl text-gray-700 cursor-pointer">Robotics Club</h2>
                                     </div>
                 

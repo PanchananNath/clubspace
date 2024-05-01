@@ -3,6 +3,8 @@ import { TbBell } from "react-icons/tb";
 import { AiOutlineLike } from "react-icons/ai";  
 import { BiDislike } from "react-icons/bi";
 import { BiCommentDetail } from "react-icons/bi";
+import Image from "next/image";
+
 export default function Events() {
     return (
       <div className="min-h-min w-screen bg-white rounded-t-2xl rounded-2xl">
@@ -10,7 +12,7 @@ export default function Events() {
             <div className="w-fill h-18  flex justify-end pr-10">
                 <Icons icon={<MdEvent className="h-10 w-10 text-black"/>}/>
                 <Icons icon={<TbBell className="h-10 w-10 text-black font-bold"/>}/>
-                <img src="http://upload.wikimedia.org/wikipedia/commons/d/d4/Cat_March_2010-1a.jpg" alt="" className="rounded-full h-10 w-10 m-5"/>
+                <Image src="http://upload.wikimedia.org/wikipedia/commons/d/d4/Cat_March_2010-1a.jpg" alt="" className="rounded-full h-10 w-10 m-5"/>
             </div>
         </div>
         <div className="flex justify-start">
@@ -23,14 +25,14 @@ export default function Events() {
             <div className=" w-11/12 min-h-min p-3 bg-blue-300 rounded-t-2xl rounded-2xl m-3">
             <div>
        <div className ="flex justify-self-start ">
-       <img src="/images/download (1).jpg" alt="" className=" h-14 w-14 m-5 rounded-md" />
+       <Image src="/images/download (1).jpg" alt="" className=" h-14 w-14 m-5 rounded-md" />
 
         <h1 className="text-lg text-black text-center self-center">Cyber X Secure Club</h1>
         </div>
           
           <p className=" text-base text-black flex justify-self-auto">Hello dear all , we are cyberxsecure club. here are some of our events pictures which we took on our session. Hope you like our project. Nice to meet you.</p>
           <div className=" flex justify-center">
-          <img src="/images/WhatsApp Image 2024-02-12 at 00.41.59_12e8e928.jpg" alt=" " className=" h-screen w-10/11 m-5 " />
+          <Image src="/images/WhatsApp Image 2024-02-12 at 00.41.59_12e8e928.jpg" alt=" " className=" h-screen w-10/11 m-5 " />
           </div>
           
           <div className=" h-20 flex justify-around items-center pl-3 pr-3 mt-3">

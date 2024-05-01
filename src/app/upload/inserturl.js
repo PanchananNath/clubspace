@@ -1,11 +1,22 @@
 const { Pool } = require('pg');
 
+// const pool = new Pool({
+//   user: 'clubspace',
+//   host: 'localhost',
+//   database: 'clubspace',
+//   password: 'root',
+//   port: 5432, 
+// });
+
 const pool = new Pool({
-  user: 'clubspace',
-  host: 'localhost',
-  database: 'clubspace',
-  password: 'root',
-  port: 5432, // Default PostgreSQL port
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DATABASE,
+  port: 5432,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const downloadURL = 'https://example.com/download/file';

@@ -3,19 +3,19 @@ import CustomCard, { CardProps } from "@/components/common/myRemainder/fetchdata
 import { sql } from "@vercel/postgres";
 
 export default async function Events() {
-  const { rows } = await sql`SELECT * FROM events;`;
+  //const { rows } = await sql`SELECT * FROM events;`;
 
 
 
-  console.log(rows);
+  //console.log(rows);
 
   return (
     <main className="flex min-h-screen w-full items-center justify-center p-1">
       <div className="bg-secondary min-h-full w-full rounded-2xl p-20">
         <div className="bg-slate-100  py-20 px-44">
-      <small className="text-sm ml-2"></small>// for date_time 
+      <small className="text-sm ml-2"></small>
           <div>Events</div>
-          {rows.map((event) => {
+          {/* {rows.map((event) => {
           console.log(event);
           return (
             <div className="w-64" key={event.id}>
@@ -29,7 +29,7 @@ export default async function Events() {
              
             </div>
           );
-        })}
+        })} */}
         </div>
       </div>
     </main>
