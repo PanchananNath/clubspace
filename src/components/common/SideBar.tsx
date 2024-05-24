@@ -23,7 +23,7 @@ export default function SideBar() {
 
   return (
     <>
-      <aside className="h-screen w-full sm:w-1/6 sm:flex flex-col bg-primary sm:flex-row hidden ">
+      <aside className="h-screen sm:w-1/6 sm:flex flex-col bg-primary sm:flex-row hidden ">
         <nav className="h-full w-full sm:w-64 flex flex-col bg-primary">
           <div className="p-4 mb-10 flex items-center text-white font-extrabold text-2xl">
             <Image
@@ -110,7 +110,7 @@ export default function SideBar() {
                   } h-7 w-7`}
                 />
               }
-              route={"/login"}
+              route={"/"}
               text={"Log Out"}
             />
           </ul>
