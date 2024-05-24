@@ -4,7 +4,6 @@ import { Suspense, useEffect, useState } from "react";
 import PopupForm from "@/components/common/popupForm";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
-import Navbar from "@/components/common/navbar";
 import LoadingSkeleton from "@/components/common/loading";
 import Remainder from "@/components/common/remainder";
 import Calendar from "@/components/common/calendar";

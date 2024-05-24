@@ -10,6 +10,10 @@ import logo from "/public/logo.png";
 import SideBarItem from "./SideBarItem";
 import { useState } from "react";
 
+import { signOut } from "firebase/auth";
+import { auth } from "@/app/firebase";
+import { useRouter } from "next/navigation";
+
 enum Tabs {
   dashboard,
   events,
@@ -20,7 +24,16 @@ enum Tabs {
 
 export default function SideBar() {
   const [activeTab, setActiveTab] = useState<Tabs>(Tabs.dashboard);
-
+  const router = useRouter();
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      router.push("/");
+      console.log("User signed out");
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
   return (
     <>
       <aside className="h-screen sm:w-1/6 sm:flex flex-col bg-primary sm:flex-row hidden ">
@@ -102,7 +115,7 @@ export default function SideBar() {
                 active={activeTab == Tabs.settings}
               />
             </button>
-            <SideBarItem
+            {/* <SideBarItem
               icon={
                 <TbLogout
                   className={`${
@@ -112,8 +125,21 @@ export default function SideBar() {
               }
               route={"/"}
               text={"Log Out"}
-            />
+            /> */}
+
+            <button
+              onClick={handleSignOut}
+              className="ml-7 flex text-white justify-center items-center p-2 gap-3"
+            >
+              <TbLogout className="h-7 w-7" /> Sign Out
+            </button>
           </ul>
+          {/* <li className="m-1 p-3 h-fill w-52 flex">
+            {props.icon}
+            <span
+              className={props.active ? "ml-4 text-white" : "ml-4 text-grey"}
+            ></span>
+          </li> */}
         </nav>
       </aside>
       <nav className="fixed bottom-0 inset-x-0 h-16 bg-primary sm:hidden flex items-center justify-around">

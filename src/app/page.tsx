@@ -12,6 +12,7 @@ export default function Home() {
     <main className="h-screen flex justify-center items-center bg-gradient-to-r from-blue-200 via-blue-500 to-blue-800">
       {whatsnewpopup && <WhatsNew setWhatsNew={setWhatsNewPopup} />}
       {signin && <Signin setSignin={setSignin} />}
+
       <div
         className="flex flex-col"
         // style={{
