@@ -51,7 +51,7 @@ export default function Home() {
           </div>
         ))}
       </Carousel>
-      <div className="absolute h-full w-full flex justify-center items-center bg-black bg-opacity-50">
+      <div className="absolute h-screen w-full flex justify-center items-center bg-black bg-opacity-50">
         <div className=" flex flex-col">
           <div className="flex justify-center items-center cursor-pointer text-white">
             <div
