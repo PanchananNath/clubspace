@@ -16,8 +16,8 @@ const whatsNewList = [
 
 export default function WhatsNew({ setWhatsNew }: WhatsNewProps) {
   return (
-    <div className="bg-opacity-50 bg-black absolute h-full w-full top-0 flex justify-center items-center z-40">
-      <div className="relative bg-slate-800 w-2/3 p-3 rounded-xl">
+    <div className="sm:bg-opacity-50 sm:bg-black absolute h-screen sm:h-full sm:w-full top-0 flex justify-center items-center z-40">
+      <div className="relative bg-slate-800 sm:bg-opacity-100 bg-opacity-95   sm:w-2/3 sm:p-3 p-1 m-2 sm:m-0 rounded-xl">
         <button onClick={() => setWhatsNew(false)} className="absolute right-5">
           <IoMdCloseCircleOutline className="text-3xl text-white" />
         </button>

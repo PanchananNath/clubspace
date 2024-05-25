@@ -58,11 +58,14 @@ export default function Signin({ setSignin }: SigninProps) {
 
   return (
     <div className="absolute z-50 w-full h-full flex justify-center items-center">
-      <div className=" relative bg-white w-2/3 rounded-lg p-2 shadow-md shadow-blue-400 flex">
-        <button onClick={() => setSignin(false)} className="absolute right-1">
+      <div className=" relative sm:bg-white w- sm:w-2/3 rounded-lg p-2 shadow-md shadow-blue-400 flex">
+        <button
+          onClick={() => setSignin(false)}
+          className="absolute sm:right-1 right-5 top-5"
+        >
           <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
         </button>
-        <div className="w-1/2 flex justify-center">
+        <div className="w-1/2 sm:flex justify-center hidden">
           <div className="w-96">
             <Image
               src={"/clubspaceLogo.png"}
@@ -72,7 +75,7 @@ export default function Signin({ setSignin }: SigninProps) {
             />
           </div>
         </div>
-        <div className="w-1/2 flex justify-center items-center">
+        <div className="sm:w-1/2 w-full flex justify-center items-center">
           <div className="bg-slate-200 px-10 py-3 w-96 rounded-lg">
             <h2 className="font-bold text-2xl text-[#365486]">Signin</h2>
             <p className="text-xs text-black">Please enter your details</p>

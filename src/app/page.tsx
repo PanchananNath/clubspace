@@ -36,17 +36,17 @@ export default function Home() {
         autoPlay={true}
         interval={3000} // 3 seconds
         infiniteLoop={true}
-        className="w-full h-full overflow-hidden"
+        className="sm:w-full sm:h-full overflow-hidden"
       >
         {images.map((image, index) => (
           <div key={index}>
             <Image
               src={image.src}
               alt={image.alt}
-              height={1000}
+              height={2000}
               width={2000}
-              // layout="fill"
-              // objectFit="cover"
+              quality={80}
+              className="object-cover h-screen"
             />
           </div>
         ))}
@@ -66,10 +66,10 @@ export default function Home() {
             </div>
           </div>
 
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl ">
+          <h1 className="mb-4 text-5xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl text-center">
             Welcome to the Club Space
           </h1>
-          <p className="self-center mb-5 text-slate-300 text-xl">
+          <p className="self-center mb-5 text-slate-300 sm:text-xl">
             Connect with people with your interest
           </p>
           <div className="flex flex-col justify-center items-center gap-5 mt-5">
