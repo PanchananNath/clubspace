@@ -32,7 +32,7 @@ export default async function getEvents(
     const client = await pool.connect();
     // console.log("CONTENT OF CLIENT: ", client);
 
-    const eventsdata = await client.query("SELECT * FROM events"); //eventsdata object contains the rows and fields of the events table returned from the query
+    const eventsdata = await client.query("SELECT * FROM public.events"); //eventsdata object contains the rows and fields of the events table returned from the query
 
     // console.log("CONTENT OF EVENTSDATA: ", eventsdata);
 
