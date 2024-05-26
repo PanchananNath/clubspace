@@ -22,7 +22,7 @@ export default async function handler(
     // Execute the SQL SELECT query to fetch required data
     const clubsResult = await client.query(
       `
-      SELECT * from events;
+      SELECT eventid, name, poster, venue, date_time, description, registration_url, qr_code from events;
       `
     );
 

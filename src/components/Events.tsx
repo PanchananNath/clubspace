@@ -3,7 +3,7 @@ import Image from "next/image";
 import LikeButton from "./likeButton";
 
 export interface EventProps {
-  eventId: number;
+  eventid: number;
   name: string;
   poster: string;
   venue: string;
@@ -14,8 +14,7 @@ export interface EventProps {
 }
 
 const Events: React.FC<{ event: EventProps }> = ({ event }) => {
-  const eventdata = event;
-  console.log("EVENTS DATA: ", eventdata);
+  // console.log(event);
   return (
     <div className="bg-secondary p-3 m-5 rounded-xl shadow-2xl">
       <div className="flex items-center mb-2">

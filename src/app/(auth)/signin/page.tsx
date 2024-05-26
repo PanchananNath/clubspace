@@ -1,4 +1,4 @@
-import Signin from "@/components/common/signin";
+import Signin from "@/components/account/signin";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
 

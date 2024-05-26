@@ -1,5 +1,3 @@
-import CustomCard, { CardProps } from "@/components/allclubs/fetchdata";
-import { sql } from "@vercel/postgres";
 import { MdEvent } from "react-icons/md";
 import { TbBell } from "react-icons/tb";
 import Image from "next/image";

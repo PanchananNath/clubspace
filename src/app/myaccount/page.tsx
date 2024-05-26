@@ -1,5 +1,4 @@
 "use client";
-import Account from "@/components/common/Account";
 import logo from "../../../public/logo.png";
 import Image from "next/image";
 import Calendar from "@/components/common/calendar";
@@ -33,8 +32,6 @@ export default function MyAccountPage() {
               <div className="text-2xl text-[#365486] font-bold mb-4 ">
                 My Account
               </div>
-
-              <Account />
             </div>
             <div className="grid gap-4">
               <Calendar />

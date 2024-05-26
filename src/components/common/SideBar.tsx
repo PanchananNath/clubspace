@@ -8,7 +8,7 @@ import { TbLogout } from "react-icons/tb";
 import Image from "next/image";
 import logo from "/public/logo.png";
 import SideBarItem from "./SideBarItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/firebase";
@@ -24,19 +24,20 @@ enum Tabs {
 
 export default function SideBar() {
   const [activeTab, setActiveTab] = useState<Tabs>(Tabs.dashboard);
-  const router = useRouter();
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      router.push("/");
-      console.log("User signed out");
-    } catch (error) {
-      console.error("Error signing out: ", error);
-    }
-  };
+  // const router = useRouter();
+
+  // const handleSignOut = async () => {
+  //   try {
+  //     await signOut(auth);
+  //     router.push("/");
+  //     console.log("User signed out");
+  //   } catch (error) {
+  //     console.error("Error signing out: ", error);
+  //   }
+  // };
   return (
     <>
-      <aside className="h-screen sm:w-1/6 sm:flex flex-col bg-primary sm:flex-row hidden ">
+      <aside className="h-screen sm:w-80 sm:flex flex-col bg-primary sm:flex-row hidden ">
         <nav className="h-full w-full sm:w-64 flex flex-col bg-primary">
           <div className="p-4 mb-10 flex items-center text-white font-extrabold text-2xl">
             <Image
@@ -53,7 +54,7 @@ export default function SideBar() {
               <SideBarItem
                 icon={<LuLayoutDashboard className="text-white h-7 w-7" />}
                 text={"Dashboard"}
-                route={"/"}
+                route={"/dashboard"}
                 active={activeTab == Tabs.dashboard}
               />
             </button>
@@ -80,7 +81,7 @@ export default function SideBar() {
                     } h-7 w-7`}
                   />
                 }
-                route={"/clubs"}
+                route={"/allclubs"}
                 text={"All Clubs"}
                 active={activeTab == Tabs.allclubs}
               />
@@ -127,12 +128,12 @@ export default function SideBar() {
               text={"Log Out"}
             /> */}
 
-            <button
+            {/* <button
               onClick={handleSignOut}
               className="ml-7 flex text-white justify-center items-center p-2 gap-3"
             >
               <TbLogout className="h-7 w-7" /> Sign Out
-            </button>
+            </button> */}
           </ul>
           {/* <li className="m-1 p-3 h-fill w-52 flex">
             {props.icon}

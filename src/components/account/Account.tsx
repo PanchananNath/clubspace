@@ -13,8 +13,8 @@ import UpdatePhone from "./addPhone";
 import ChangeProfilePic from "./changeProfilePic";
 import UpdatePassword from "./updatePassword";
 import UpdateResume from "./updateResume";
-import DropdownItem from "./dropdownItem";
 import { Icon } from "next/dist/lib/metadata/types/metadata-types";
+import DropdownItem from "../common/dropdownItem";
 
 interface DropdownType {
   id: number;
@@ -27,24 +27,26 @@ enum DropdownState {
   none,
   personalDetails,
   securitySettings,
-  resume
+  resume,
 }
 
 const Account = () => {
-  const [dropdownOpen, setDropdownOpen] = useState<DropdownState> (DropdownState.none);
+  const [dropdownOpen, setDropdownOpen] = useState<DropdownState>(
+    DropdownState.none
+  );
   const [clicked, setClicked] = useState(false);
   const [clickValue, setClickValue] = useState(0);
   const { firstname, lastname, email } = useEmailAndName();
   const router = useRouter();
 
   const toggleDropdown = (dropdown: DropdownState) => {
-    if(dropdownOpen === dropdown) {
+    if (dropdownOpen === dropdown) {
       setDropdownOpen(DropdownState.none);
       return;
     }
     setDropdownOpen(dropdown);
   };
-  
+
   const handleDropdownItemClick = (value: React.SetStateAction<number>) => {
     setClickValue(value);
     setClicked(true);
@@ -64,12 +66,27 @@ const Account = () => {
     setClicked(false);
   };
 
-  const dropdownItems : DropdownType[] = [
-    { id: 1, text: "Personal Details", icon: <BsPersonCircle size={20}/>, state : DropdownState.personalDetails},
-    { id: 2, text: "Security Settings", icon: <BsKey size={20}/>, state : DropdownState.securitySettings},
-    { id: 3, text: "Resume", icon: <ImProfile size={20}/> , state : DropdownState.resume}
+  const dropdownItems: DropdownType[] = [
+    {
+      id: 1,
+      text: "Personal Details",
+      icon: <BsPersonCircle size={20} />,
+      state: DropdownState.personalDetails,
+    },
+    {
+      id: 2,
+      text: "Security Settings",
+      icon: <BsKey size={20} />,
+      state: DropdownState.securitySettings,
+    },
+    {
+      id: 3,
+      text: "Resume",
+      icon: <ImProfile size={20} />,
+      state: DropdownState.resume,
+    },
   ];
-  
+
   const components: { [key: number]: JSX.Element } = {
     1: <ChangeUserName toggleBackToMain={toggleBackToMain} />,
     2: <UpdateEmail toggleBackToMain={toggleBackToMain} />,

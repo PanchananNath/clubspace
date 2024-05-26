@@ -1,7 +1,7 @@
 "use client";
-import Signin from "@/components/common/signin";
+import Signin from "@/components/account/signin";
 import WhatsNew from "@/components/whatsnew";
-import SignUp from "@/components/common/signup";
+import SignUp from "@/components/account/signup";
 import Image from "next/image";
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";

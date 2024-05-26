@@ -20,13 +20,13 @@ export default async function handler(
     const client = await pool.connect();
 
     // Execute the SQL SELECT query to fetch required data
-    const clubsResult = await client.query(
+    const data = await client.query(
       `
-      SELECT id, name, poster, vision FROM clubs;
+      SELECT id, name, about, vision, objective, poster, start_date, socialmedia FROM clubs;
       `
     );
 
-    const clubs = clubsResult.rows;
+    const clubs = data.rows;
 
     client.release();
 

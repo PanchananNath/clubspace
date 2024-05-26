@@ -61,7 +61,7 @@ export default function Signin({ setSignin }: SigninProps) {
       <div className=" relative sm:bg-white w- sm:w-2/3 rounded-lg p-2 shadow-md shadow-blue-400 flex">
         <button
           onClick={() => setSignin(false)}
-          className="absolute sm:right-1 right-5 top-5"
+          className="absolute sm:right-1 sm:top-1 right-5 top-5"
         >
           <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
         </button>

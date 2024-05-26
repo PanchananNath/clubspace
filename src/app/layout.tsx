@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <UidProvider>
           <EmailAndNameProvider>
-            <main className="w-full">{children}</main>
+            <main>{children}</main>
           </EmailAndNameProvider>
         </UidProvider>
       </body>
