@@ -8,16 +8,15 @@ import ClubCard from "@/components/clubs/clubcard";
 
 export default async function Clubs() {
   try {
-    const response = await fetch(
-      "http://clubspace.vercel.app/api/getclubsdata",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        cache: "no-cache",
-      }
-    );
+    const url = "http://clubspace.vercel.app/api/getclubsdata";
+    const url2 = "http://localhost:3000/api/getclubsdata";
+    const response = await fetch(url2, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
 
     const data = await response.json();
     // console.log(data);

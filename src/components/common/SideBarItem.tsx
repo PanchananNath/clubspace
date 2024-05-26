@@ -5,14 +5,14 @@ function SideBarItem(props: {
   icon: any;
   text: String;
   route: any;
-  active?: boolean;
+  pathname?: any;
 }) {
   let active = false;
   return (
     <li className="m-1 p-3 h-fill w-52 flex">
       <span
         className={
-          props.active
+          props.pathname == props.route
             ? "h-fill w-2 bg-white rounded-xl mr-3"
             : "h-fill w-2 mr-3"
         }
@@ -25,7 +25,13 @@ function SideBarItem(props: {
         }}
       >
         {props.icon}
-        <span className={props.active ? "ml-4 text-white" : "ml-4 text-grey"}>
+        <span
+          className={
+            props.pathname === props.route
+              ? "ml-4 text-white"
+              : "ml-4 text-grey"
+          }
+        >
           {props.text}
         </span>
       </Link>

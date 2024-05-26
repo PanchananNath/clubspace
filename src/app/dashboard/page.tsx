@@ -1,17 +1,15 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import PopupForm from "@/components/common/popupForm";
-import Image from "next/image";
-import logo from "../../../public/logo.png";
-import LoadingSkeleton from "@/components/common/loading";
-import Remainder from "@/components/common/remainder";
-import Calendar from "@/components/common/calendar";
 import { useEmailAndName } from "@/contexts/emailAndName";
 import SideBar from "@/components/common/SideBar";
 import ProfileBar from "@/components/common/profilebar";
+// import { usePathname } from "next/navigation";
 
 export default function DashboardPage() {
+  // const pathname = usePathname();
+  // console.log(pathname);
+
   const [showPopup, setShowPopup] = useState(false);
   const { id, firstname } = useEmailAndName();
 
@@ -32,9 +30,9 @@ export default function DashboardPage() {
 
   return (
     // <Suspense fallback={<LoadingSkeleton />}>
-    <main className="flex h-screen">
+    <main className="h-screen flex overflow-hidden bg-primary">
       <SideBar />
-      <div className="w-full">
+      <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5">
         <ProfileBar />
         {/* <div className="bg-white relative h-screen w-full rounded-2xl bg-static">
           <Image

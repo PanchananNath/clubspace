@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/firebase";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 enum Tabs {
   dashboard,
@@ -23,7 +23,10 @@ enum Tabs {
 }
 
 export default function SideBar() {
+  const pathname = usePathname();
+  console.log(pathname);
   const [activeTab, setActiveTab] = useState<Tabs>(Tabs.dashboard);
+
   // const router = useRouter();
 
   // const handleSignOut = async () => {
@@ -52,10 +55,16 @@ export default function SideBar() {
           <ul className="flex-1">
             <button onClick={() => setActiveTab(Tabs.dashboard)}>
               <SideBarItem
-                icon={<LuLayoutDashboard className="text-white h-7 w-7" />}
+                icon={
+                  <LuLayoutDashboard
+                    className={`${
+                      pathname === "/dashboard" ? "text-white" : "text-grey"
+                    } h-7 w-7`}
+                  />
+                }
                 text={"Dashboard"}
                 route={"/dashboard"}
-                active={activeTab == Tabs.dashboard}
+                pathname={pathname}
               />
             </button>
             <button onClick={() => setActiveTab(Tabs.events)}>
@@ -63,13 +72,13 @@ export default function SideBar() {
                 icon={
                   <MdEvent
                     className={`${
-                      activeTab == Tabs.events ? "text-white" : "text-grey"
+                      pathname === "/events" ? "text-white" : "text-grey"
                     } h-7 w-7`}
                   />
                 }
                 route={"/events"}
                 text={"Events"}
-                active={activeTab == Tabs.events}
+                pathname={pathname}
               />
             </button>
             <button onClick={() => setActiveTab(Tabs.allclubs)}>
@@ -77,13 +86,13 @@ export default function SideBar() {
                 icon={
                   <PiUsersThreeFill
                     className={`${
-                      activeTab == Tabs.allclubs ? "text-white" : "text-grey"
+                      pathname === "/allclubs" ? "text-white" : "text-grey"
                     } h-7 w-7`}
                   />
                 }
                 route={"/allclubs"}
                 text={"All Clubs"}
-                active={activeTab == Tabs.allclubs}
+                pathname={pathname}
               />
             </button>
             <button onClick={() => setActiveTab(Tabs.myaccount)}>
@@ -91,13 +100,13 @@ export default function SideBar() {
                 icon={
                   <MdAccountCircle
                     className={`${
-                      activeTab == Tabs.myaccount ? "text-white" : "text-grey"
+                      pathname === "/myaccount" ? "text-white" : "text-grey"
                     } h-7 w-7`}
                   />
                 }
                 route={"/myaccount"}
                 text={"My Account"}
-                active={activeTab == Tabs.myaccount}
+                pathname={pathname}
               />
             </button>
           </ul>
@@ -107,13 +116,13 @@ export default function SideBar() {
                 icon={
                   <FiSettings
                     className={`${
-                      activeTab == Tabs.settings ? "text-white" : "text-grey"
+                      pathname === "/settings" ? "text-white" : "text-grey"
                     } h-7 w-7`}
                   />
                 }
                 route={"/settings"}
                 text={"Settings"}
-                active={activeTab == Tabs.settings}
+                pathname={pathname}
               />
             </button>
             {/* <SideBarItem

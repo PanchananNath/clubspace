@@ -14,12 +14,15 @@ export interface Events {
 }
 
 export default async function Home() {
-  const res = await fetch("http://clubspace.vercel.app/api/eventsdata", {
+  const url1 = "http://clubspace.vercel.app/api/eventsdata";
+  const url2 = "http://localhost:3000/api/eventsdata";
+  ``;
+  const res = await fetch(url2, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
-    cache: "no-cache",
   });
   const eventdata = await res.json();
   return (
