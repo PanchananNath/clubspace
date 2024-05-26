@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ViewClubDetail from "./viewclubdetail";
+import JoinForm from "@/app/allclubs/form";
 
 export interface AllClubsData {
   id: number;
@@ -23,10 +24,11 @@ interface SocialMedia {
 
 export interface ClubCardProps {
   data: AllClubsData;
+  allclubsdata: AllClubsData[];
 }
-export default function ClubCard({ data }: ClubCardProps) {
-  // console.log(data.socialmedia);
+export default function ClubCard({ data, allclubsdata }: ClubCardProps) {
   const [viewclub, setViewClub] = useState(false);
+  const [joinform, setOpenJoinForm] = useState(false);
   return (
     <div className="bg-blue-300 p-3 flex flex-col justify-between rounded-md shadow-lg hover:shadow-blue-500 group">
       <div className="mb-2">
@@ -59,12 +61,22 @@ export default function ClubCard({ data }: ClubCardProps) {
         >
           View
         </button>
-        <button className="bg-blue-500 px-7 py-1 rounded-lg hover:bg-blue-400">
+        <button
+          onClick={() => setOpenJoinForm(true)}
+          className="bg-blue-500 px-7 py-1 rounded-lg hover:bg-blue-400"
+        >
           Join
         </button>
       </div>
       {viewclub ? (
         <ViewClubDetail setViewClub={setViewClub} data={data} />
+      ) : null}
+      {joinform ? (
+        <JoinForm
+          currentclubid={data.id}
+          clubdata={allclubsdata}
+          setJoinFormView={setOpenJoinForm}
+        />
       ) : null}
     </div>
   );

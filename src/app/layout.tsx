@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { UidProvider } from "@/contexts/id";
 import { EmailAndNameProvider } from "@/contexts/emailAndName";
-import SideBar from "@/components/common/SideBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

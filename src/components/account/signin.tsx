@@ -14,6 +14,7 @@ export interface SigninProps {
 export default function Signin({ setSignin }: SigninProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -128,8 +129,9 @@ export default function Signin({ setSignin }: SigninProps) {
                 type="submit"
                 onClick={handleSignInWithEmailAndPassword}
                 className="bg-[#4467a3] hover:bg-[#365486]  rounded-lg text-white py-2 hover:scale-105 duration-300 flex justify-center"
+                disabled={loading} // Disable the button when loading
               >
-                Signin
+                {loading ? "Loading..." : "Signin"}
               </button>
             </form>
 
@@ -170,7 +172,10 @@ export default function Signin({ setSignin }: SigninProps) {
               <p>
                 Don&apos;t have an account?{" "}
                 <button
-                  onClick={() => router.push("/signup")}
+                  onClick={() => {
+                    setLoading(true);
+                    router.push("/signup");
+                  }}
                   className="text-blue-700 hover:cursor-pointer"
                 >
                   Register

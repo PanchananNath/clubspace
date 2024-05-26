@@ -31,7 +31,7 @@ export default async function Clubs() {
           </h1>
           <div className="grid grid-cols-2 gap-5">
             {data.map((club: any, index: number) => (
-              <ClubCard key={index} data={club} />
+              <ClubCard key={index} data={club} allclubsdata={data} />
             ))}
           </div>
         </div>
