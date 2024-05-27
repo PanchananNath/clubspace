@@ -17,16 +17,21 @@ export interface EventsData {
 }
 
 export default async function Home() {
-  const url1 = "http://clubspace.vercel.app/api/geteventsone";
+  const url1 = "https://clubspace.vercel.app/api/geteventsone";
   const url2 = "http://localhost:3000/api/geteventsone";
   ``;
-  const res = await fetch(url2, {
+  const res = await fetch(url1, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
   });
+  if (res.status === 404) {
+    // Handle 404 error here
+    console.error("Error: Not Found");
+    return;
+  }
   const eventdata = await res.json();
   return (
     <main className="h-screen flex overflow-hidden bg-primary">

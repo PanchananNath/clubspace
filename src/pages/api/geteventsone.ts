@@ -35,9 +35,6 @@ export default async function getEventsOne(
     );
 
     const data = _data.rows;
-
-    client.release();
-
     //send a json reqsonse to client
     res.status(200).json(data);
   } catch (err) {
