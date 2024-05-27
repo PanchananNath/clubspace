@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { UidProvider } from "@/contexts/id";
 import { EmailAndNameProvider } from "@/contexts/emailAndName";
+import NextTopLoader from "nextjs-toploader";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <NextTopLoader color="#BEFFF7" speed={500} />
         <UidProvider>
           <EmailAndNameProvider>
             <main>{children}</main>

@@ -13,11 +13,11 @@ export default function ClubCalendar() {
         onFocusChange={setFocusedDate}
         date-focused={focusedDate}
         style={{
-          accentColor: "#365486",
-          color: "#365486",
-          backgroundColor: "#DCF2F1",
+          accentColor: "#A0DEFF",
+          color: "#0C134F",
+          backgroundColor: "#CAF4FF",
           borderRadius: "10px",
-          boxShadow: "5px 10px 20px 0 rgba(0, 0, 0, 0.1)",
+          boxShadow: "5px 25px 20px 0 rgba(0, 0, 0, 0.1)",
         }}
       />
     </div>

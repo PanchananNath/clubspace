@@ -1,23 +1,24 @@
 export default function Remainder() {
   return (
-    <div className="bg-[#B3DCE9] w-48 h-wrap pb-3 rounded-lg shadow-md">
-        <div className="bg-[#60b2cb] p-2 px-3 flex justify-between items-center rounded-lg gap-2">
-            <p className="text-[#0F1035] font-semibold">My Remainders</p>
-            <button className="font-semibold text-2xl rounded-full hover:bg-[#438498] px-2">+</button>
+    <div className="absolute right-0 z-50 bg-[#CAF4FF] w-60 h-72 p-2 rounded-md shadow-lg overflow-hidden">
+      <div className="overflow-y-auto h-72 custom-scrollbar">
+        <h4 className="text-center font-semibold border-b-2 border-slate-300">
+          Notifications
+        </h4>
+        <div className="border-b border-slate-500 text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
         </div>
-
-      <div className="grid gap-1 p-3 text-sm text-[#dacece]">
-        <div className="p-1 bg-[#365486] px-4 items-center rounded-md">
-          <p className="">cyber session</p>
-          <p className="text-xs">feb 3 - 9:30am</p>
+        <div className="border-b border-slate-500 text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
         </div>
-        <div className="p-1 bg-[#365486] px-4 items-center rounded-md">
-          <p className="">Robotics</p>
-          <p className="text-xs">feb 3 - 9:30am</p>
+        <div className="border-b border-slate-500 text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
         </div>
-        <div className="p-1 bg-[#365486] px-4 items-center rounded-md">
-          <p className="">Ai session</p>
-          <p className="text-xs">feb 3 - 9:30am</p>
+        <div className="border-b border-slate-500 text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
+        </div>
+        <div className="border-b border-slate-500 text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
         </div>
       </div>
     </div>

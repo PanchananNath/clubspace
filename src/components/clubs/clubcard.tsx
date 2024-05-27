@@ -34,13 +34,23 @@ export default function ClubCard({ data, allclubsdata }: ClubCardProps) {
       <div className="mb-2">
         <div className="h-24 flex gap-3">
           <div className="overflow-hidden rounded-md">
-            <Image
-              src={data.poster}
-              alt={data.name}
-              height={500}
-              width={500}
-              className="w-24 group-hover:scale-110 rounded-m"
-            />
+            {data.poster ? (
+              <Image
+                src={data.poster}
+                alt={data.name}
+                height={500}
+                width={500}
+                className="w-24 group-hover:scale-110 rounded-m"
+              />
+            ) : (
+              <Image
+                src={`/logo.png`}
+                alt={data.name}
+                height={500}
+                width={500}
+                className="w-24 group-hover:scale-110 rounded-m"
+              />
+            )}
           </div>
 
           <div>

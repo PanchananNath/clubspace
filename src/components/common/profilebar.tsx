@@ -8,6 +8,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 import ClubCalendar from "../calender";
+import Remainder from "./remainder";
 
 const profilelinks = [
   {
@@ -23,6 +24,7 @@ const profilelinks = [
 export default function ProfileBar() {
   const [hover, setHover] = useState(false);
   const [showCalender, setShowCalender] = useState(false);
+  const [showRemainder, setShowRemainder] = useState(false);
   const router = useRouter();
   const handleSignOut = async () => {
     try {
@@ -44,7 +46,14 @@ export default function ProfileBar() {
           <IoMdCalendar className="text-3xl" />
           {showCalender && <ClubCalendar />}
         </div>
-        <BiBell className="text-3xl" />
+        <div
+          onMouseEnter={() => setShowRemainder(true)}
+          onMouseLeave={() => setShowRemainder(false)}
+          className=""
+        >
+          <BiBell className="text-3xl" />
+          {showRemainder && <Remainder />}
+        </div>
         <div
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
