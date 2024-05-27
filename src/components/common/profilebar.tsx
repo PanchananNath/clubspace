@@ -32,7 +32,7 @@ export default function ProfileBar() {
     }
   };
   return (
-    <div className="px- py-2">
+    <div className="px- py-2 sticky top-0 bg-white">
       <div className="flex justify-end items-center gap-5">
         <IoMdCalendar className="text-3xl" />
         <BiBell className="text-3xl" />

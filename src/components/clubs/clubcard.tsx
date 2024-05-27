@@ -30,7 +30,7 @@ export default function ClubCard({ data, allclubsdata }: ClubCardProps) {
   const [viewclub, setViewClub] = useState(false);
   const [joinform, setOpenJoinForm] = useState(false);
   return (
-    <div className="bg-blue-300 p-3 flex flex-col justify-between rounded-md shadow-lg hover:shadow-blue-500 group">
+    <div className="bg-secondary p-3 flex flex-col justify-between rounded-lg shadow-lg hover:shadow-blue-500 group bg-opacity-65">
       <div className="mb-2">
         <div className="h-24 flex gap-3">
           <div className="overflow-hidden rounded-md">
@@ -57,13 +57,13 @@ export default function ClubCard({ data, allclubsdata }: ClubCardProps) {
       <div className="self-center space-x-5 text-white">
         <button
           onClick={() => setViewClub(true)}
-          className="bg-blue-500 px-7 py-1 rounded-lg hover:bg-blue-400"
+          className="bg-primary px-7 py-1 rounded-lg hover:bg-blue-400"
         >
           View
         </button>
         <button
           onClick={() => setOpenJoinForm(true)}
-          className="bg-blue-500 px-7 py-1 rounded-lg hover:bg-blue-400"
+          className="bg-primary px-7 py-1 rounded-lg hover:bg-blue-400"
         >
           Join
         </button>

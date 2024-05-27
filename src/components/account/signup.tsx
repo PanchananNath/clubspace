@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { auth } from "@/app/firebase";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import Image from "next/image";
 
 export interface SigninProps {
   setSignup: (value: boolean) => void;
@@ -44,72 +45,84 @@ export default function Signup({ setSignup }: SigninProps) {
 
   return (
     <div className="absolute z-50 h-full w-full flex justify-center items-center">
-      <div className="relative sm:bg-white w- sm:w-2/3 rounded-lg p-2 shadow-md shadow-blue-400 flex">
+      <div className=" relative sm:bg-white w- sm:w-2/3 rounded-lg p-2 shadow-md shadow-blue-400 flex">
         <button
           onClick={() => setSignup(false)}
-          className="absolute sm:right-1 right-5 top-5"
+          className="absolute sm:right-1 sm:top-1 right-5 top-5"
         >
           <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
         </button>
-        <div className=" bg-gray-50 px-10 py-3 w-96 rounded-lg">
-          <h2 className="font-bold text-2xl text-[#365486]">Sign up</h2>
-          <p className="text-xs text-black">Please enter your details</p>
+        <div className="w-1/2 sm:flex justify-center hidden">
+          <div className="w-96">
+            <Image
+              src={"/clubspaceLogo.png"}
+              alt="LogoImage"
+              width={500}
+              height={500}
+            />
+          </div>
+        </div>
+        <div className="sm:w-1/2 w-full flex justify-center items-center">
+          <div className="bg-slate-200 px-10 py-3 sm:w-[28rem] w-96 rounded-lg">
+            <h2 className="font-bold text-2xl text-[#365486]">Sign up</h2>
+            <p className="text-xs text-black">Please enter your details</p>
 
-          <form className="flex flex-col gap-4" onSubmit={signup}>
-            <input
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="p-2 mt-4 text-sm text-black rounded-lg border w-full"
-            />
-            <input
-              name="password"
-              type="password"
-              autoComplete="new-password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="p-2 text-sm text-black rounded-lg border"
-            />
-            <input
-              name="passwordAgain"
-              type="password"
-              autoComplete="new-password"
-              placeholder="Confirm Password"
-              value={passwordAgain}
-              onChange={(e) => setPasswordAgain(e.target.value)}
-              required
-              className="p-2 text-sm text-black rounded-lg border w-full"
-            />
+            <form className="flex flex-col gap-4" onSubmit={signup}>
+              <input
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="p-2 mt-4 text-sm text-black rounded-lg border w-full"
+              />
+              <input
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="p-2 text-sm text-black rounded-lg border"
+              />
+              <input
+                name="passwordAgain"
+                type="password"
+                autoComplete="new-password"
+                placeholder="Confirm Password"
+                value={passwordAgain}
+                onChange={(e) => setPasswordAgain(e.target.value)}
+                required
+                className="p-2 text-sm text-black rounded-lg border w-full"
+              />
 
-            <button
-              type="submit"
-              disabled={
-                !email ||
-                !password ||
-                !passwordAgain ||
-                password !== passwordAgain
-              }
-              className="bg-[#4467a3] rounded-lg text-white py-2 hover:scale-105 duration-300  hover:bg-[#365486]"
-            >
-              Signup
-            </button>
-          </form>
-          <div className="text-xs text-black flex justify-center mt-1">
-            <p>
-              Have an account?{" "}
               <button
-                onClick={() => router.push("/signin")}
-                className="text-blue-700 hover:cursor-pointer"
+                type="submit"
+                disabled={
+                  !email ||
+                  !password ||
+                  !passwordAgain ||
+                  password !== passwordAgain
+                }
+                className="bg-[#4467a3] rounded-lg text-white py-2 hover:scale-105 duration-300  hover:bg-[#365486]"
               >
-                Signin
+                Signup
               </button>
-            </p>
+            </form>
+            <div className="text-xs text-black flex justify-center mt-1">
+              <p>
+                Have an account?{" "}
+                <button
+                  onClick={() => router.push("/signin")}
+                  className="text-blue-700 hover:cursor-pointer"
+                >
+                  Signin
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
