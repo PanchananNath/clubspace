@@ -1,6 +1,7 @@
-import Events from "@/components/Events";
 import SideBar from "@/components/common/SideBar";
 import ProfileBar from "@/components/common/profilebar";
+import Events from "@/components/events/Events";
+import Image from "next/image";
 
 export interface Events {
   eventid: number;
@@ -31,12 +32,22 @@ export default async function Home() {
 
       <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar">
         <ProfileBar />
-        <h1 className="text-2xl text-primary font-bold border-b-2 border-slate-400">
+        <h1 className="text-2xl text-primary font-bold border-b-2 border-slate-400 mb-3">
           Events
         </h1>
-        {eventdata.map((event: Events) => (
-          <Events key={event.eventid} event={event} />
-        ))}
+        <div className="z-10">
+          {" "}
+          {eventdata.map((event: Events) => (
+            <Events key={event.eventid} event={event} />
+          ))}
+        </div>
+        <Image
+          src={`/logo.png`}
+          height={500}
+          width={500}
+          alt=""
+          className="absolute z-0 top-1/2 left-1/2 sm:left-[60%] transform -translate-x-1/2 -translate-y-1/2 opacity-20"
+        />
       </div>
     </main>
   );

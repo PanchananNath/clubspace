@@ -22,12 +22,12 @@ export default async function Clubs() {
     return (
       <main className="h-screen flex overflow-hidden bg-primary">
         <SideBar />
-        <div className="z-40 flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 ">
+        <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar">
           <ProfileBar />
           <h1 className="text-2xl text-primary font-bold border-b-2 border-slate-400 mb-3">
             All Clubs
           </h1>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-5 z-10">
             {data.map((club: any, index: number) => (
               <ClubCard key={index} data={club} allclubsdata={data} />
             ))}
@@ -37,7 +37,7 @@ export default async function Clubs() {
             height={500}
             width={500}
             alt=""
-            className="absolute -z-10 top-1/2 left-1/2 sm:left-[60%] transform -translate-x-1/2 -translate-y-1/2 opacity-20"
+            className="absolute z-0 top-1/2 left-1/2 sm:left-[60%] transform -translate-x-1/2 -translate-y-1/2 opacity-20"
           />
         </div>
       </main>

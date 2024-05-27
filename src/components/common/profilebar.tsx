@@ -7,6 +7,7 @@ import Link from "next/link";
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
+import ClubCalendar from "../calender";
 
 const profilelinks = [
   {
@@ -21,6 +22,7 @@ const profilelinks = [
 
 export default function ProfileBar() {
   const [hover, setHover] = useState(false);
+  const [showCalender, setShowCalender] = useState(false);
   const router = useRouter();
   const handleSignOut = async () => {
     try {
@@ -32,9 +34,16 @@ export default function ProfileBar() {
     }
   };
   return (
-    <div className="px- py-2 sticky top-0 bg-white">
+    <div className="px- py-2 sticky top-0 bg-white z-20">
       <div className="flex justify-end items-center gap-5">
-        <IoMdCalendar className="text-3xl" />
+        <div
+          onMouseEnter={() => setShowCalender(true)}
+          onMouseLeave={() => setShowCalender(false)}
+          className=""
+        >
+          <IoMdCalendar className="text-3xl" />
+          {showCalender && <ClubCalendar />}
+        </div>
         <BiBell className="text-3xl" />
         <div
           onMouseEnter={() => setHover(true)}

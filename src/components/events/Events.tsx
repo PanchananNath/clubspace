@@ -1,6 +1,10 @@
+"use client";
 import { BiCommentDetail } from "react-icons/bi";
 import Image from "next/image";
-import LikeButton from "./likeButton";
+import LikeButton from "../likeButton";
+import { useState } from "react";
+import Query from "./query";
+import RegisterForm from "@/app/events/form";
 
 export interface EventProps {
   eventid: number;
@@ -14,11 +18,12 @@ export interface EventProps {
 }
 
 const Events: React.FC<{ event: EventProps }> = ({ event }) => {
+  const [query, setOpenQuery] = useState(false);
+  const [registerform, setOpenRegisterForm] = useState(false);
   // console.log(event);
   return (
-    <div className="bg-secondary p-3 m-5 rounded-xl shadow-2xl">
+    <div className="bg-secondary bg-opacity-70 p-3 m-5 rounded-xl shadow-lg hover:shadow-blue-500">
       <div className="flex items-center mb-2">
-        {/* ***********Club logo*********** */}
         <Image
           src={"/logo.png"}
           alt="logo"
@@ -26,12 +31,12 @@ const Events: React.FC<{ event: EventProps }> = ({ event }) => {
           width={40}
           className="mr-3"
         />
-        {/* ***********Event Title*********** */}
+
         <h1 className="font-bold">{event.name}</h1>
       </div>
-      {/* ***********Event Description*********** */}
+
       <p>{event.description}</p>
-      {/* ***********Event Poster*********** */}
+
       <div className="flex justify-center items-center mb-5 mt-5">
         <Image
           src={"/logo.png"}
@@ -46,14 +51,25 @@ const Events: React.FC<{ event: EventProps }> = ({ event }) => {
         <span className="bg-primary p-2 w-32   flex items-center justify-center gap-3 rounded-lg">
           <LikeButton />
         </span>
-        <button className="bg-primary flex items-center p-2 w-32 justify-center gap-3 text-white rounded-lg">
+        <button
+          onClick={() => setOpenQuery(!query)}
+          className="bg-primary flex items-center p-2 w-32 justify-center gap-3 text-white rounded-lg"
+        >
           <BiCommentDetail />
           Query
         </button>
-        <button className="bg-primary p-2 w-32 text-white rounded-lg">
+        <button
+          onClick={() => setOpenRegisterForm(!registerform)}
+          className="bg-primary p-2 w-32 text-white rounded-lg"
+        >
           Register
         </button>
       </div>
+
+      {query && <Query setOpenQuery={setOpenQuery} />}
+      {registerform && (
+        <RegisterForm setOpenRegisterForm={setOpenRegisterForm} />
+      )}
     </div>
   );
 };

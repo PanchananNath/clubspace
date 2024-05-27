@@ -3,30 +3,28 @@ import { AllClubsData } from "@/components/clubs/clubcard";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
 
-export interface ViewClubDetailProps {
-  setJoinFormView: (value: boolean) => void;
-  clubdata: AllClubsData[];
-  currentclubid: number;
+export interface RegisterFormProps {
+  setOpenRegisterForm: (value: boolean) => void;
+  //   clubdata: AllClubsData[];
+  //   currentclubid: number;
 }
-export default function JoinForm({
-  setJoinFormView,
-  clubdata,
-  currentclubid,
-}: ViewClubDetailProps) {
-  const currentClub = clubdata.find((club) => club.id === currentclubid);
+export default function RegisterForm({
+  setOpenRegisterForm,
+}: RegisterFormProps) {
+  //   const currentClub = clubdata.find((club) => club.id === currentclubid);
   return (
     <div className="absolute top-0 left-0 h-full w-full bg-black bg-opacity-10 flex justify-center items-center">
       <div className="relative w-full h-full  sm:w-2/3 sm:h-5/6 overflow-hidden bg-secondary rounded-lg">
         <button
-          onClick={() => setJoinFormView(false)}
+          onClick={() => setOpenRegisterForm(false)}
           className="absolute sm:right-1 sm:top-1 right-5 top-5"
         >
           <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
         </button>
         <div className="flex flex-col justify-center items-center py-3 ">
-          <h1 className="text-center text-xl font-bold">Club Joining Form</h1>
+          <h1 className="text-center text-xl font-bold">Registration Form</h1>
           <h3 className="text-sm">
-            Central Institute of Technology, Kokrajhar
+            Penetration Testing Workshop | CyberXSecure Club
           </h3>
         </div>
         <Image
@@ -44,8 +42,9 @@ export default function JoinForm({
               type="text"
               name=""
               id=""
+              required
               placeholder="Enter name"
-              className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent"
+              className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent "
             />
           </div>
           <div className="flex flex-col">
@@ -108,7 +107,7 @@ export default function JoinForm({
               </select>
             </div>
           </div>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <label htmlFor="club" className="text-sm font-semibold">
               Club
             </label>
@@ -125,7 +124,7 @@ export default function JoinForm({
                 ))}
               </select>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col">
             <span className="text-sm font-semibold">Phone</span>
             <input

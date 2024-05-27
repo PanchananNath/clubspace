@@ -1,9 +1,9 @@
 "use client";
-
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useEmailAndName } from "@/contexts/emailAndName";
 import SideBar from "@/components/common/SideBar";
 import ProfileBar from "@/components/common/profilebar";
+
 // import { usePathname } from "next/navigation";
 
 export default function DashboardPage() {
@@ -29,11 +29,11 @@ export default function DashboardPage() {
   };
 
   return (
-    // <Suspense fallback={<LoadingSkeleton />}>
     <main className="h-screen flex overflow-hidden bg-primary">
       <SideBar />
       <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5">
         <ProfileBar />
+
         {/* <div className="bg-white relative h-screen w-full rounded-2xl bg-static">
           <Image
             alt="Mountains"
@@ -72,6 +72,5 @@ export default function DashboardPage() {
         </div> */}
       </div>
     </main>
-    // </Suspense>
   );
 }
