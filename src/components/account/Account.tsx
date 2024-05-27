@@ -96,7 +96,7 @@ const Account = () => {
   };
 
   return (
-    <div className="w-80  static flex-wrap grid gap-1">
+    <div className="z-10 w-80  static flex-wrap grid gap-1">
       <div className="h-20 w-80  bg-[#80bed1] flex justify-start px-6 items-center rounded-md shadow-md">
         <div className="flex items-center gap-3">
           <button className="rounded-full w-14 h-14">

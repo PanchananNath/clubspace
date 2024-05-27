@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <main className="h-screen flex justify-center items-center bg-gradient-to-r from-blue-200 via-blue-500 to-blue-800">
       {whatsnewpopup && <WhatsNew setWhatsNew={setWhatsNewPopup} />}
-      {signin && <Signin setSignin={setSignin} />}
-      {signup && <SignUp setSignup={setSignup} />}
+      {signin && <Signin setSignin={setSignin} setSignup={setSignup} />}
+      {signup && <SignUp setSignup={setSignup} setSignin={setSignin} />}
       <Carousel
         showIndicators={false}
         showThumbs={false}

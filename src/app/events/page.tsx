@@ -3,7 +3,7 @@ import ProfileBar from "@/components/common/profilebar";
 import Events from "@/components/events/Events";
 import Image from "next/image";
 
-export interface Events {
+export interface EventsData {
   eventid: number;
   name: string;
   poster: string;
@@ -12,11 +12,13 @@ export interface Events {
   description: string;
   registrationUrl: string;
   qrCode: string;
+  clubname: string;
+  clublogo: string;
 }
 
 export default async function Home() {
-  const url1 = "http://clubspace.vercel.app/api/eventsdata";
-  const url2 = "http://localhost:3000/api/eventsdata";
+  const url1 = "http://clubspace.vercel.app/api/geteventsone";
+  const url2 = "http://localhost:3000/api/geteventsone";
   ``;
   const res = await fetch(url2, {
     method: "GET",
@@ -37,8 +39,8 @@ export default async function Home() {
         </h1>
         <div className="z-10">
           {" "}
-          {eventdata.map((event: Events) => (
-            <Events key={event.eventid} event={event} />
+          {eventdata.map((event: EventsData) => (
+            <Events key={event.eventid} data={event} />
           ))}
         </div>
         <Image

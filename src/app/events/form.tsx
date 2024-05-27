@@ -2,14 +2,15 @@
 import { AllClubsData } from "@/components/clubs/clubcard";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
+import { EventsData } from "./page";
 
 export interface RegisterFormProps {
   setOpenRegisterForm: (value: boolean) => void;
-  //   clubdata: AllClubsData[];
-  //   currentclubid: number;
+  data: EventsData;
 }
 export default function RegisterForm({
   setOpenRegisterForm,
+  data,
 }: RegisterFormProps) {
   //   const currentClub = clubdata.find((club) => club.id === currentclubid);
   return (
@@ -24,7 +25,7 @@ export default function RegisterForm({
         <div className="flex flex-col justify-center items-center py-3 ">
           <h1 className="text-center text-xl font-bold">Registration Form</h1>
           <h3 className="text-sm">
-            Penetration Testing Workshop | CyberXSecure Club
+            {data.name} | {data.clubname}
           </h3>
         </div>
         <Image

@@ -7,11 +7,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
+import { set } from "firebase/database";
 
 export interface SigninProps {
   setSignin: (value: boolean) => void;
+  setSignup: (value: boolean) => void;
 }
-export default function Signin({ setSignin }: SigninProps) {
+export default function Signin({ setSignin, setSignup }: SigninProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -174,7 +176,8 @@ export default function Signin({ setSignin }: SigninProps) {
                 <button
                   onClick={() => {
                     setLoading(true);
-                    router.push("/signup");
+                    setSignin(false);
+                    setSignup(true);
                   }}
                   className="text-blue-700 hover:cursor-pointer"
                 >

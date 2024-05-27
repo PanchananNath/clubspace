@@ -5,19 +5,9 @@ import LikeButton from "../likeButton";
 import { useState } from "react";
 import Query from "./query";
 import RegisterForm from "@/app/events/form";
+import { EventsData } from "@/app/events/page";
 
-export interface EventProps {
-  eventid: number;
-  name: string;
-  poster: string;
-  venue: string;
-  dateTime: Date;
-  description: string;
-  registrationUrl: string;
-  qrCode: string;
-}
-
-const Events: React.FC<{ event: EventProps }> = ({ event }) => {
+const Events: React.FC<{ data: EventsData }> = ({ data }) => {
   const [query, setOpenQuery] = useState(false);
   const [registerform, setOpenRegisterForm] = useState(false);
   // console.log(event);
@@ -25,17 +15,17 @@ const Events: React.FC<{ event: EventProps }> = ({ event }) => {
     <div className="bg-secondary bg-opacity-70 p-3 m-5 rounded-xl shadow-lg hover:shadow-blue-500">
       <div className="flex items-center mb-2">
         <Image
-          src={"/logo.png"}
+          src={data.clublogo || "/logo.png"}
           alt="logo"
           height={40}
           width={40}
           className="mr-3"
         />
 
-        <h1 className="font-bold">{event.name}</h1>
+        <h1 className="font-bold">{data.name} </h1>
       </div>
 
-      <p>{event.description}</p>
+      <p>{data.description}</p>
 
       <div className="flex justify-center items-center mb-5 mt-5">
         <Image
@@ -68,7 +58,7 @@ const Events: React.FC<{ event: EventProps }> = ({ event }) => {
 
       {query && <Query setOpenQuery={setOpenQuery} />}
       {registerform && (
-        <RegisterForm setOpenRegisterForm={setOpenRegisterForm} />
+        <RegisterForm setOpenRegisterForm={setOpenRegisterForm} data={data} />
       )}
     </div>
   );

@@ -11,9 +11,10 @@ import Image from "next/image";
 
 export interface SigninProps {
   setSignup: (value: boolean) => void;
+  setSignin: (value: boolean) => void;
 }
 
-export default function Signup({ setSignup }: SigninProps) {
+export default function Signup({ setSignup, setSignin }: SigninProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
@@ -63,7 +64,7 @@ export default function Signup({ setSignup }: SigninProps) {
           </div>
         </div>
         <div className="sm:w-1/2 w-full flex justify-center items-center">
-          <div className="bg-slate-200 px-10 py-3 sm:w-[28rem] w-96 rounded-lg">
+          <div className="bg-slate-200 px-10 py-3 sm:w-[rem] w-96 rounded-lg">
             <h2 className="font-bold text-2xl text-[#365486]">Sign up</h2>
             <p className="text-xs text-black">Please enter your details</p>
 
@@ -116,7 +117,10 @@ export default function Signup({ setSignup }: SigninProps) {
               <p>
                 Have an account?{" "}
                 <button
-                  onClick={() => router.push("/signin")}
+                  onClick={() => {
+                    setSignup(false);
+                    setSignin(true);
+                  }}
                   className="text-blue-700 hover:cursor-pointer"
                 >
                   Signin
