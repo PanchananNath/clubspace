@@ -9,6 +9,7 @@ import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 import ClubCalendar from "../calender";
 import Remainder from "./remainder";
+import { useEmailAndName } from "@/contexts/emailAndName";
 
 const profilelinks = [
   {
@@ -26,6 +27,7 @@ export default function ProfileBar() {
   const [showCalender, setShowCalender] = useState(false);
   const [showRemainder, setShowRemainder] = useState(false);
   const router = useRouter();
+  const { id, firstname, lastname, email, photo } = useEmailAndName();
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -60,7 +62,7 @@ export default function ProfileBar() {
           className="w-10 h-10 relative hover:border-2 hover:border-green-500 rounded-full"
         >
           <Image
-            src={`/logo.png`}
+            src={photo ? photo : "/images/user.png"}
             alt="name"
             height={500}
             width={500}
@@ -77,6 +79,7 @@ export default function ProfileBar() {
                   {link.name}
                 </Link>
               ))}
+
               <button
                 onClick={handleSignOut}
                 className="bg-gradient-to-tr from-blue-200 to-blue-500 text-black hover:font-semibold hover:from-blue-500 hover:to-blue-200 rounded-md hover:text-white py-1 "

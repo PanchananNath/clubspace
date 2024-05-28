@@ -12,7 +12,7 @@ const pool = new Pool({
   },
 });
 
-interface RequestBody{
+interface RequestBody {
   id: string;
   firstname: string;
   lastname: string;
@@ -29,9 +29,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if(req.method === 'POST') {
+  if (req.method === "POST") {
     try {
-      const { id, firstname, lastname, email, institute_id, module, semester, department_id, linkedin, phone }: RequestBody = req.body;
+      const {
+        id,
+        firstname,
+        lastname,
+        email,
+        institute_id,
+        module,
+        semester,
+        department_id,
+        linkedin,
+        phone,
+      }: RequestBody = req.body;
       const client = await pool.connect();
       // Execute the SQL INSERT query
       const popUpFormResult = await client.query(
@@ -50,22 +61,21 @@ export default async function handler(
           phone,
         ]
       );
-  
+
       const stuDataResult = await client.query(
         `INSERT INTO student_data (id, semester, module) VALUES($1, $2, $3)`,
         [id, semester, module]
       );
-  
+
       const popUpForm = popUpFormResult.rows;
       const stuData = stuDataResult.rows;
-  
+
       client.release();
-  
+
       res.status(200).json({ popUpForm, stuData });
     } catch (error) {
-      console.error("Error retreving dta from PostgreSQL:", error);
+      console.error("Error inserting data to PostgreSQL:", error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
-  
 }

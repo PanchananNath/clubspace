@@ -3,30 +3,19 @@ import { useEffect, useState } from "react";
 import { useEmailAndName } from "@/contexts/emailAndName";
 import SideBar from "@/components/common/SideBar";
 import ProfileBar from "@/components/common/profilebar";
-
-// import { usePathname } from "next/navigation";
+import PopupForm from "@/components/account/popupForm";
 
 export default function DashboardPage() {
-  // const pathname = usePathname();
-  // console.log(pathname);
-
   const [showPopup, setShowPopup] = useState(false);
   const { id, firstname } = useEmailAndName();
 
   useEffect(() => {
-    if (!id) {
-      setShowPopup(true);
-    }
+    const timer = setTimeout(() => {
+      setShowPopup(id === null);
+    }, 7000); // Delay of x seconds
+
+    return () => clearTimeout(timer); // Clear the timer if the component unmounts
   }, [id]);
-
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
-
-  const handleSubmit = () => {
-    console.log("form submitted");
-    togglePopup();
-  };
 
   return (
     <main className="h-screen flex overflow-hidden bg-primary">
@@ -62,11 +51,9 @@ export default function DashboardPage() {
             </div> */}
 
         {/* Popup */}
-        {/* <div className="fixed inset-0 flex items-center justify-center z-40">
-              {showPopup && (
-                <PopupForm onClose={togglePopup} onSubmit={handleSubmit} />
-              )}
-            </div> */}
+        {/* <div className="fixed inset-0 flex items-center justify-center z-40"> */}
+        {showPopup && <PopupForm setShowPopup={setShowPopup} />}
+        {/* </div> */}
         {/* End Popup */}
         {/* </div>
         </div> */}

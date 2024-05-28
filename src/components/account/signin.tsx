@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
-import { set } from "firebase/database";
+import { user } from "@nextui-org/react";
 
 export interface SigninProps {
   setSignin: (value: boolean) => void;

@@ -13,6 +13,7 @@ interface EmailAndNameContextType {
   firstname: string | null;
   lastname: string | null;
   email: string | null;
+  photo: string | null;
 }
 
 const EmailAndNameContext = createContext<EmailAndNameContextType>({
@@ -20,6 +21,7 @@ const EmailAndNameContext = createContext<EmailAndNameContextType>({
   firstname: null,
   lastname: null,
   email: null,
+  photo: null,
 });
 
 export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
@@ -29,6 +31,7 @@ export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
   const [firstname, setfirstname] = useState<string | null>(null);
   const [lastname, setlastname] = useState<string | null>(null);
   const [email, setemail] = useState<string | null>(null);
+  const [photo, setphoto] = useState<string | null>(null);
   //const [dataFetched, setDataFetched] = useState(false);
   const { uid } = useUid();
 
@@ -45,13 +48,14 @@ export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
         if (response.ok) {
           const jsonData = await response.json();
           if (jsonData.length > 0) {
-            console.log("response: ", jsonData[0].id);
+            console.log("id: ", jsonData[0].id);
             console.log("firstname: ", jsonData[0].firstname);
-            const {id, firstname, lastname, email } = jsonData[0];
+            const { id, firstname, lastname, email, photo } = jsonData[0];
             setid(id);
             setfirstname(firstname);
             setlastname(lastname);
             setemail(email);
+            setphoto(photo);
             //setDataFetched(true);
           }
         } else {
@@ -68,7 +72,9 @@ export const EmailAndNameProvider: React.FC<{ children: ReactNode }> = ({
   }, [uid]);
 
   return (
-    <EmailAndNameContext.Provider value={{ id, firstname, lastname, email }}>
+    <EmailAndNameContext.Provider
+      value={{ id, firstname, lastname, email, photo }}
+    >
       {children}
     </EmailAndNameContext.Provider>
   );
