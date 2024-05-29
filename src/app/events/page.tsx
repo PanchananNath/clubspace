@@ -20,7 +20,7 @@ export default async function Home() {
   const url1 = "https://clubspace.vercel.app/api/geteventsone";
   const url2 = "http://localhost:3000/api/geteventsone";
   ``;
-  const res = await fetch(url1, {
+  const res = await fetch(url2, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

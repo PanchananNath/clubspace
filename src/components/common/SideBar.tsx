@@ -8,9 +8,13 @@ import Image from "next/image";
 import logo from "/public/logo.png";
 import SideBarItem from "./SideBarItem";
 import { usePathname } from "next/navigation";
+import { useEmailAndName } from "@/contexts/emailAndName";
+import { RiAdminFill } from "react-icons/ri";
 
 export default function SideBar() {
   const pathname = usePathname();
+  const { type_id } = useEmailAndName();
+
   return (
     <aside className="h-screen sm:w-80 sm:flex flex-col bg-primary sm:flex-row hidden ">
       <nav className="h-full w-full sm:w-64 flex flex-col bg-primary">
@@ -24,7 +28,7 @@ export default function SideBar() {
           />
           <span className="ml-3">Club Space</span>
         </div>
-        <ul className="flex-1">
+        <div className="flex-1">
           <SideBarItem
             icon={
               <LuLayoutDashboard
@@ -74,7 +78,21 @@ export default function SideBar() {
             text={"My Account"}
             pathname={pathname}
           />
-        </ul>
+          {type_id === 1 ? (
+            <SideBarItem
+              icon={
+                <RiAdminFill
+                  className={`${
+                    pathname === "/admin" ? "text-white" : "text-grey"
+                  } h-7 w-7`}
+                />
+              }
+              route={"/admin"}
+              text={"Admin"}
+              pathname={pathname}
+            />
+          ) : null}
+        </div>
         <ul className="flex-0">
           <SideBarItem
             icon={

@@ -5,9 +5,9 @@ import ClubCard from "@/components/clubs/clubcard";
 
 export default async function Clubs() {
   try {
-    const url = "https://clubspace.vercel.app/api/getclubsdata";
+    const url1 = "https://clubspace.vercel.app/api/getclubsdata";
     const url2 = "http://localhost:3000/api/getclubsdata";
-    const response = await fetch(url, {
+    const response = await fetch(url2, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
