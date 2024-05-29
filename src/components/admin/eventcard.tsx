@@ -5,7 +5,7 @@ interface EventsData {
 }
 
 interface EventCardProps {
-  data: EventsData[];
+  data: EventsData;
 }
 
 export default function EventCard({ data }: EventCardProps) {

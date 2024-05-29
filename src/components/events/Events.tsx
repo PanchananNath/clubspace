@@ -12,7 +12,7 @@ const Events: React.FC<{ data: EventsData }> = ({ data }) => {
   const [registerform, setOpenRegisterForm] = useState(false);
   // console.log(event);
   return (
-    <div className="bg-secondary bg-opacity-70 p-3 m-5 rounded-xl shadow-lg hover:shadow-blue-500">
+    <div className="bg-secondary bg-opacity-90 p-3 m-5 rounded-xl shadow-lg hover:shadow-blue-500">
       <div className="flex items-center mb-2">
         <Image
           src={data.clublogo || "/logo.png"}

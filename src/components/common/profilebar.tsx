@@ -38,7 +38,7 @@ export default function ProfileBar() {
     }
   };
   return (
-    <div className="px- py-2 sticky top-0 bg-white z-20">
+    <div className="px- py-2 sticky top-0 bg-white">
       <div className="flex justify-end items-center gap-5">
         <div
           onMouseEnter={() => setShowCalender(true)}
@@ -59,10 +59,10 @@ export default function ProfileBar() {
         <div
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          className="w-10 h-10 relative hover:border-2 hover:border-green-500 rounded-full"
+          className="w-10 h-10 relative border-2 hover:border-green-500 rounded-full border-primary"
         >
           <Image
-            src={photo ? photo : "/images/user.png"}
+            src={"/logo.png"}
             alt="name"
             height={500}
             width={500}

@@ -4,9 +4,9 @@ import WhatsNew from "@/components/whatsnew";
 import SignUp from "@/components/account/signup";
 import Image from "next/image";
 import { useState } from "react";
-import { Carousel } from "react-responsive-carousel";
 import { MdFiberNew } from "react-icons/md";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const images = [
   {

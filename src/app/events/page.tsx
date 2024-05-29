@@ -37,24 +37,28 @@ export default async function Home() {
     <main className="h-screen flex overflow-hidden bg-primary">
       <SideBar />
 
-      <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar">
+      <div
+        className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar"
+        style={{
+          backgroundImage: `url("/logo.png")`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <ProfileBar />
         <h1 className="text-2xl text-primary font-bold border-b-2 border-slate-400 mb-3">
           Events
-        </h1>
-        <div className="z-10">
-          {" "}
-          {eventdata.map((event: EventsData) => (
-            <Events key={event.eventid} data={event} />
-          ))}
-        </div>
-        <Image
+        </h1>{" "}
+        {eventdata.map((event: EventsData) => (
+          <Events key={event.eventid} data={event} />
+        ))}
+        {/* <Image
           src={`/logo.png`}
           height={500}
           width={500}
           alt=""
           className="absolute z-0 top-1/2 left-1/2 sm:left-[60%] transform -translate-x-1/2 -translate-y-1/2 opacity-20"
-        />
+        /> */}
       </div>
     </main>
   );

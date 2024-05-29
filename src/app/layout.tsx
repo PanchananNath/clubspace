@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextTopLoader color="#BEFFF7" speed={500} />
+        <NextTopLoader color="#BEFFF7" speed={500} showSpinner={false} />
         <UidProvider>
           <EmailAndNameProvider>
             <main>{children}</main>

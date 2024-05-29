@@ -4,13 +4,17 @@ import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 
 export default async function AllEvents() {
+  const id = "nYObvDBWIIXJzzkUBYTUt3XEnwW2";
   try {
-    const res = await fetch("http://localhost:3000/api/getevents", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `http://localhost:3000/api/getclubevents?id=${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     console.log(data);
     return (
@@ -19,7 +23,10 @@ export default async function AllEvents() {
 
         <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white p-7 space-y-5">
           <div className="relative flex w-full items-center">
-            <Link href="/admin" className="flex items-center gap-1">
+            <Link
+              href="/admin"
+              className="flex items-center gap-1 hover:text-slate-600"
+            >
               <IoMdArrowBack />
               Back
             </Link>
