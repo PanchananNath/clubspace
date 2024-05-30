@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { auth } from "@/app/firebase";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
+import Spinner from "./spinner";
 
 export interface SigninProps {
   setSignup: (value: boolean) => void;
@@ -18,10 +19,12 @@ export default function Signup({ setSignup, setSignin }: SigninProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const signup = async (e: { preventDefault: () => void }) => {
     e.preventDefault(); // Prevent default form submission
+    setLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -31,6 +34,7 @@ export default function Signup({ setSignup, setSignin }: SigninProps) {
       router.push("/dashboard");
     } catch (error) {
       console.error("Error registering user:", error);
+      setLoading(false);
     }
   };
 
@@ -77,7 +81,7 @@ export default function Signup({ setSignup, setSignin }: SigninProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="p-2 mt-4 text-sm text-black rounded-lg border w-full"
+                className="p-2 mt-4 text-sm text-black rounded-lg border-2 focus:outline-none focus:border-primary"
               />
               <input
                 name="password"
@@ -87,7 +91,7 @@ export default function Signup({ setSignup, setSignin }: SigninProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="p-2 text-sm text-black rounded-lg border"
+                className="p-2 text-sm text-black rounded-lg border-2 focus:outline-none focus:border-primary"
               />
               <input
                 name="passwordAgain"
@@ -97,7 +101,7 @@ export default function Signup({ setSignup, setSignin }: SigninProps) {
                 value={passwordAgain}
                 onChange={(e) => setPasswordAgain(e.target.value)}
                 required
-                className="p-2 text-sm text-black rounded-lg border w-full"
+                className="p-2 text-sm text-black rounded-lg border-2 focus:outline-none focus:border-primary"
               />
 
               <button
@@ -110,7 +114,7 @@ export default function Signup({ setSignup, setSignin }: SigninProps) {
                 }
                 className="bg-[#4467a3] rounded-lg text-white py-2 hover:scale-105 duration-300  hover:bg-[#365486]"
               >
-                Signup
+                {loading ? <Spinner /> : "Signup"}
               </button>
             </form>
             <div className="text-xs text-black flex justify-center mt-1">

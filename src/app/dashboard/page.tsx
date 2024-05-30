@@ -29,7 +29,7 @@ export default function DashboardPage() {
       <div
         className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5"
         style={{
-          backgroundImage: `url("/logo.png")`,
+          backgroundImage: `url("/bglogo.png")`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}

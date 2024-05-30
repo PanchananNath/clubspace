@@ -27,7 +27,7 @@ export default function ViewClubDetail({
   data,
 }: ViewClubDetailProps) {
   return (
-    <div className="absolute top-0 left-0 h-full w-full bg-black bg-opacity-10 flex justify-center items-center">
+    <div className="absolute top-0 left-0 h-full w-full bg-black bg-opacity-50 flex justify-center items-center">
       <div className="relative w-full h-full  sm:w-5/6 sm:h-5/6 sm:overflow-hidden bg-secondary rounded-lg">
         <button
           onClick={() => setViewClub(false)}

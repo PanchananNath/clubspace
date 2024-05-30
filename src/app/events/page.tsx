@@ -17,49 +17,60 @@ export interface EventsData {
 }
 
 export default async function Home() {
-  const url1 = "https://clubspace.vercel.app/api/geteventsone";
-  const url2 = "http://localhost:3000/api/geteventsone";
-  ``;
-  const res = await fetch(url2, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
-  if (res.status === 404) {
-    // Handle 404 error here
-    console.error("Error: Not Found");
-    return;
-  }
-  const eventdata = await res.json();
-  return (
-    <main className="h-screen flex overflow-hidden bg-primary">
-      <SideBar />
+  try {
+    const url =
+      process.env.NODE_ENV === "production"
+        ? "https://clubspace.vercel.app/api/geteventsone"
+        : "http://localhost:3000/api/geteventsone";
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (res.status === 404) {
+      // Handle 404 error here
+      console.error("Error: Not Found");
+      return;
+    }
+    const eventdata = await res.json();
+    return (
+      <main className="h-screen flex overflow-hidden bg-primary">
+        <SideBar />
 
-      <div
-        className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar"
-        style={{
-          backgroundImage: `url("/logo.png")`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <ProfileBar />
-        <h1 className="text-2xl text-primary font-bold border-b-2 border-slate-400 mb-3">
-          Events
-        </h1>{" "}
-        {eventdata.map((event: EventsData) => (
-          <Events key={event.eventid} data={event} />
-        ))}
-        {/* <Image
+        <div
+          className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar"
+          style={{
+            backgroundImage: `url("/bglogo.png")`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <ProfileBar />
+          <h1 className="text-2xl text-primary font-bold border-b-2 border-slate-400 mb-3">
+            Events
+          </h1>{" "}
+          {Array.isArray(eventdata) &&
+            eventdata.map((event: EventsData) => (
+              <Events key={event.eventid} data={event} />
+            ))}
+          {/* <Image
           src={`/logo.png`}
           height={500}
           width={500}
           alt=""
           className="absolute z-0 top-1/2 left-1/2 sm:left-[60%] transform -translate-x-1/2 -translate-y-1/2 opacity-20"
         /> */}
+        </div>
+      </main>
+    );
+  } catch (error) {
+    console.error("Error retrieving data from PostgreSQL:", error);
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
+        <div>Error: {error as React.ReactNode}</div>
       </div>
-    </main>
-  );
+    );
+  }
 }

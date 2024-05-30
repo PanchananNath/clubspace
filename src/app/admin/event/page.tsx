@@ -5,6 +5,11 @@ import { IoMdArrowBack } from "react-icons/io";
 
 export default async function AllEvents() {
   const id = "nYObvDBWIIXJzzkUBYTUt3XEnwW2";
+  const url =
+    process.env.NODE_ENV === "production"
+      ? `https://clubspace.vercel.app/api/getclubevents?id=${id}`
+      : `http://localhost:3000/api/getclubevents?id=${id}`;
+
   try {
     const res = await fetch(
       `http://localhost:3000/api/getclubevents?id=${id}`,

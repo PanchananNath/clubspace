@@ -14,7 +14,7 @@ export default function RegisterForm({
 }: RegisterFormProps) {
   //   const currentClub = clubdata.find((club) => club.id === currentclubid);
   return (
-    <div className="absolute top-0 left-0 h-full w-full bg-black bg-opacity-10 flex justify-center items-center">
+    <div className="absolute top-0 left-0 h-full w-full bg-black bg-opacity-50 flex justify-center items-center">
       <div className="relative w-full h-full  sm:w-2/3 sm:h-5/6 overflow-hidden bg-secondary rounded-lg">
         <button
           onClick={() => setOpenRegisterForm(false)}

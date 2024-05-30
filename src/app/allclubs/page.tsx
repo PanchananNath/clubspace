@@ -5,9 +5,11 @@ import ClubCard from "@/components/clubs/clubcard";
 
 export default async function Clubs() {
   try {
-    const url1 = "https://clubspace.vercel.app/api/getclubsdata";
-    const url2 = "http://localhost:3000/api/getclubsdata";
-    const response = await fetch(url2, {
+    const url =
+      process.env.NODE_ENV === "production"
+        ? "https://clubspace.vercel.app/api/getclubsdata"
+        : "http://localhost:3000/api/getclubsdata";
+    const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export default async function Clubs() {
         <div
           className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5 custom-scrollbar"
           style={{
-            backgroundImage: `url("/logo.png")`,
+            backgroundImage: `url("/bglogo.png")`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
@@ -39,9 +41,10 @@ export default async function Clubs() {
             All Clubs
           </h1>
           <div className="grid sm:grid-cols-2 gap-5">
-            {data.map((club: any, index: number) => (
-              <ClubCard key={index} data={club} allclubsdata={data} />
-            ))}
+            {Array.isArray(data) &&
+              data.map((club: any, index: number) => (
+                <ClubCard key={index} data={club} allclubsdata={data} />
+              ))}
           </div>
           {/* <Image
             src={`/logo.png`}
@@ -55,6 +58,10 @@ export default async function Clubs() {
     );
   } catch (error) {
     console.error("Error retrieving data from PostgreSQL:", error);
-    return <div>Error</div>;
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
+        <div>Error: {error as React.ReactNode}</div>
+      </div>
+    );
   }
 }

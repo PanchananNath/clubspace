@@ -8,17 +8,17 @@ export default function ForgotPassword() {
 
   const resetEmail = (auth: Auth, email: string) => {
     sendPasswordResetEmail(auth, email)
-    .then(() => {
-      console.log('Password Reset Email Sent');
-    })
-    .catch((error) => {
-      console.log("Error sending Password Reset Email: ", error.message);
-    });
+      .then(() => {
+        console.log("Password Reset Email Sent");
+      })
+      .catch((error) => {
+        console.log("Error sending Password Reset Email: ", error.message);
+      });
   };
 
   return (
     <>
-      <div className="bg-white px-16 py-3 w-96">
+      <div className="bg-white px-5 py-5 w-96 rounded-md shadow-md shadow-black">
         <h2 className="font-bold text-2xl text-[#365486]">
           Reset your Password
         </h2>
@@ -34,7 +34,7 @@ export default function ForgotPassword() {
             autoComplete="email"
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="p-2 text-sm rounded-lg border w-full"
+            className="p-2 text-sm rounded-lg border-2 focus:outline-none focus:border-primary"
           />
           <button
             onClick={() => resetEmail(auth, email)}
