@@ -17,7 +17,7 @@ export default async function getEventsOne(
   res: NextApiResponse
 ) {
   try {
-    if (req.method !== "GET") {
+    if (req.method !== "DELETE") {
       return res.status(405).json({
         error: "Method Not Allowed",
         message: "This route only accepts GET requests",
@@ -25,21 +25,30 @@ export default async function getEventsOne(
     }
     const id = req.query.id;
     const client = await pool.connect();
-    console.log("CONTENT OF CLIENT: ", client);
+    try {
+      const events_club_link = await client.query(
+        `DELETE FROM events_club_link
+        WHERE event_id=$1;`,
+        [id]
+      );
+    } catch (err) {
+      console.error("Error deleting from events_club_link:", err);
+    }
 
-    const _data = await client.query(
-      `Select e.eventid, e.name, e.venue, e.date_time, c.id
-      from events as e
-      join events_club_link as ecl on ecl.event_id=e.eventid
-      join clubs as c on c.id=ecl.club_id
-      join user_club_link as ucl on ucl.club_id=c.id
-      where ucl.user_id=$1;`,
-      [id] // Use parameterized query
-    );
+    try {
+      const _data = await client.query(
+        `DELETE FROM events
+        WHERE eventid=$1;`,
+        [id] // Use parameterized query
+      );
+    } catch (err) {
+      console.error("Error deleting from events:", err);
+    }
 
-    const data = _data.rows;
+    client.release();
+
     //send a json reqsonse to client
-    res.status(200).json(data);
+    res.status(200).json({ message: "Event Deleted Successfully" });
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error", err });
   }

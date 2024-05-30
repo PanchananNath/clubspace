@@ -2,6 +2,7 @@ import EventCard from "@/components/admin/eventcard";
 import SideBar from "@/components/common/SideBar";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 export default async function AllEvents() {
   const id = "nYObvDBWIIXJzzkUBYTUt3XEnwW2";
@@ -18,6 +19,7 @@ export default async function AllEvents() {
         headers: {
           "Content-Type": "application/json",
         },
+        cache: "no-cache",
       }
     );
     const data = await res.json();
@@ -26,7 +28,14 @@ export default async function AllEvents() {
       <main className="h-screen flex overflow-hidden bg-primary">
         <SideBar />
 
-        <div className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white p-7 space-y-5">
+        <div
+          className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white p-7 space-y-5 custom-scrollbar "
+          style={{
+            backgroundImage: `url("/bglogo.png")`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <div className="relative flex w-full items-center">
             <Link
               href="/admin"
@@ -39,6 +48,12 @@ export default async function AllEvents() {
               All Events
             </h3>
           </div>
+          <Link
+            href={"/admin/event/add"}
+            className="w-fit text-6xl text-primary hover:text-slate-600 fixed bottom-8 left-[19rem] hover:scale-125"
+          >
+            <IoAddCircleSharp />
+          </Link>
           <div className="grid grid-cols-3 gap-5">
             {data.map((event: any) => {
               return <EventCard data={event} key={event.eventid} />;

@@ -1,4 +1,6 @@
-import AdminPanel from "@/components/admin/adminpanel";
+import AdminEventCard from "@/components/admin/admineventcard";
+import MemberCard from "@/components/admin/memberscard";
+
 import SideBar from "@/components/common/SideBar";
 import ProfileBar from "@/components/common/profilebar";
 
@@ -19,9 +21,8 @@ export default function Admin() {
           Admin Panel
         </h1>
         <div className="grid grid-cols-3 gap-10">
-          <AdminPanel />
-          <AdminPanel />
-          <AdminPanel />
+          <AdminEventCard />
+          <MemberCard />
         </div>
       </div>
     </main>

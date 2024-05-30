@@ -1,3 +1,4 @@
+import { user } from "@nextui-org/theme";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Pool } from "pg";
 
@@ -28,15 +29,12 @@ export default async function getEventsOne(
     console.log("CONTENT OF CLIENT: ", client);
 
     const _data = await client.query(
-      `Select e.eventid, e.name, e.venue, e.date_time, c.id
-      from events as e
-      join events_club_link as ecl on ecl.event_id=e.eventid
-      join clubs as c on c.id=ecl.club_id
-      join user_club_link as ucl on ucl.club_id=c.id
-      where ucl.user_id=$1;`,
+      `SELECT club_id
+      FROM user_club_link
+      where user_id=$1;`,
       [id] // Use parameterized query
     );
-
+    client.release();
     const data = _data.rows;
     //send a json reqsonse to client
     res.status(200).json(data);

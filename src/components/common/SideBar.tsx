@@ -83,7 +83,9 @@ export default function SideBar() {
               icon={
                 <RiAdminFill
                   className={`${
-                    pathname === "/admin" ? "text-white" : "text-grey"
+                    pathname && pathname.startsWith("/admin")
+                      ? "text-white"
+                      : "text-grey"
                   } h-7 w-7`}
                 />
               }

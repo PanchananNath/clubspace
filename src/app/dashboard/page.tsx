@@ -7,25 +7,47 @@ import ProfileBar from "@/components/common/profilebar";
 import PopupForm from "@/components/account/popupForm";
 import CustomSpinner from "@/components/spinner";
 import Image from "next/image";
+import Alert from "@/components/account/alert";
 
 export default function DashboardPage() {
   const [showPopup, setShowPopup] = useState(false);
   const { id, firstname } = useEmailAndName();
   const [loading, setLoading] = useState(true);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
 
   useEffect(() => {
+    // Start a timer
+    const timer = setTimeout(() => {
+      if (id === null || firstname === null) {
+        setAlertMessage("Check your internet connection and try again.");
+        setLoading(false);
+      }
+    }, 5000); // 5 seconds
+
     // Only stop loading if id and firstname are not null
     if (id !== null && firstname !== null) {
       setLoading(false);
-      setTimeout(() => {
-        setShowPopup(id === null); //id is null, means user is not registered in the database
-      }, 5000); // Delay of x seconds
+      clearTimeout(timer); // Clear the timer if id and firstname are fetched
+      setShowPopup(id === null); // id is null, means user is not registered in the database
     }
+
+    // Clear the timer when the component unmounts or when the dependencies change
+    return () => {
+      clearTimeout(timer);
+      console.log("useEffect stopped after 5 seconds");
+    };
   }, [id, firstname]); // Add firstname to the dependency array
 
   return (
     <main className="h-screen flex overflow-hidden bg-primary">
       <SideBar />
+      {alertMessage && (
+        <Alert
+          message={alertMessage}
+          onClose={() => setAlertMessage(null)}
+          ClassName="fixed top-0 bg-black bg-opacity-20 h-full w-full z-50 flex justify-end items-end"
+        />
+      )}
       <div
         className="flex flex-col overflow-y-auto w-full m-1 rounded-lg bg-white px-5"
         style={{

@@ -25,15 +25,13 @@ export default async function getEventsOne(
     }
     const id = req.query.id;
     const client = await pool.connect();
-    console.log("CONTENT OF CLIENT: ", client);
 
     const _data = await client.query(
-      `Select e.eventid, e.name, e.venue, e.date_time, c.id
-      from events as e
-      join events_club_link as ecl on ecl.event_id=e.eventid
-      join clubs as c on c.id=ecl.club_id
-      join user_club_link as ucl on ucl.club_id=c.id
-      where ucl.user_id=$1;`,
+      `SELECT e.name, e.poster, e.venue, e.date_time, e.description, e.registration_url, e.qr_code, es.sponsorname, es.sponsor_url, es.sponsor_logo
+      FROM events as e
+      LEFT JOIN event_sponsors as es ON e.eventid = es.eventid
+      WHERE e.eventid = $1;
+      `,
       [id] // Use parameterized query
     );
 

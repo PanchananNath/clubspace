@@ -7,6 +7,8 @@ import { useState } from "react";
 import { MdFiberNew } from "react-icons/md";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useEmailAndName } from "@/contexts/emailAndName";
+import { useRouter } from "next/navigation";
 
 const images = [
   {
@@ -23,6 +25,7 @@ export default function Home() {
   const [whatsnewpopup, setWhatsNewPopup] = useState(false);
   const [signin, setSignin] = useState(false);
   const [signup, setSignup] = useState(false);
+
   return (
     <main className="h-screen flex justify-center items-center bg-gradient-to-r from-blue-200 via-blue-500 to-blue-800">
       {whatsnewpopup && <WhatsNew setWhatsNew={setWhatsNewPopup} />}

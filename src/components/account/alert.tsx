@@ -3,11 +3,12 @@ import React from "react";
 interface AlertProps {
   message: string;
   onClose: () => void;
+  ClassName?: string;
 }
 
-const Alert: React.FC<AlertProps> = ({ message, onClose }) => {
+const Alert: React.FC<AlertProps> = ({ message, onClose, ClassName }) => {
   return (
-    <div className="fixed top-0 bg-black bg-opacity-20 h-full w-full z-50 flex justify-end items-end">
+    <div className={`${ClassName}`}>
       <div className="bg-white rounded-lg p-6 max-w-sm shadow-lg">
         <p className="text-lg font-semibold mb-4">{message}</p>
         <button

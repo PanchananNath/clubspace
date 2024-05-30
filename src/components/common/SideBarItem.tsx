@@ -12,7 +12,7 @@ function SideBarItem(props: {
     <li className="m-1 p-3 h-fill w-52 flex">
       <span
         className={
-          props.pathname == props.route
+          props.pathname.startsWith(props.route)
             ? "h-fill w-2 bg-white rounded-xl mr-3"
             : "h-fill w-2 mr-3"
         }
@@ -27,7 +27,7 @@ function SideBarItem(props: {
         {props.icon}
         <span
           className={
-            props.pathname === props.route
+            props.pathname.startsWith(props.route)
               ? "ml-4 text-white"
               : "ml-4 text-grey"
           }
