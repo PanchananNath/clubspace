@@ -5,6 +5,8 @@ import { IoMdArrowBack } from "react-icons/io";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 export default function ClubMembers() {
+  //get club_id
+
   return (
     <main className="h-screen flex overflow-hidden bg-primary">
       <SideBar />
