@@ -69,12 +69,12 @@ export default function Signin({ setSignin, setSignup }: SigninProps) {
       {alertMessage && (
         <Alert message={alertMessage} onClose={() => setAlertMessage(null)} />
       )}
-      <div className=" relative sm:bg-white w- sm:w-2/3 rounded-lg p-2 shadow-md shadow-blue-400 flex">
+      <div className=" relative sm:bg-white w- sm:w-2/3 rounded-lg p-2 shadow-md shadow-[#6f9ded] flex">
         <button
           onClick={() => setSignin(false)}
           className="absolute sm:right-1 sm:top-1 right-5 top-5"
         >
-          <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
+          <IoMdCloseCircleOutline className="text-3xl text-[#6f9ded]" />
         </button>
         <div className="w-1/2 sm:flex justify-center hidden">
           <div className="w-96">

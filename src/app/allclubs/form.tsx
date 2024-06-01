@@ -21,7 +21,7 @@ export default function JoinForm({
           onClick={() => setJoinFormView(false)}
           className="absolute sm:right-1 sm:top-1 right-5 top-5"
         >
-          <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
+          <IoMdCloseCircleOutline className="text-3xl text-[#6f9ded]" />
         </button>
         <div className="flex flex-col justify-center items-center py-3 ">
           <h1 className="text-center text-xl font-bold">Club Joining Form</h1>
@@ -45,7 +45,7 @@ export default function JoinForm({
               name=""
               id=""
               placeholder="Enter name"
-              className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent"
+              className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent"
             />
           </div>
           <div className="flex flex-col">
@@ -55,7 +55,7 @@ export default function JoinForm({
               name=""
               id=""
               placeholder="Enter Roll No"
-              className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent "
+              className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent "
             />
           </div>
           <div className="flex flex-col">
@@ -66,7 +66,7 @@ export default function JoinForm({
               <select
                 id="branch"
                 name="branch"
-                className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent w-full"
+                className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent w-full"
               >
                 <option value="">Select...</option>
                 <option value="branch1">Branch 1</option>
@@ -82,7 +82,7 @@ export default function JoinForm({
               <select
                 id="semester"
                 name="semester"
-                className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent w-full"
+                className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent w-full"
               >
                 <option value="" className="text-sm font-semibold">
                   Select...
@@ -100,7 +100,7 @@ export default function JoinForm({
               <select
                 id="year"
                 name="year"
-                className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent w-full"
+                className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent w-full"
               >
                 <option value="">Select...</option>
                 <option value="branch1">Branch 1</option>
@@ -116,7 +116,7 @@ export default function JoinForm({
               <select
                 id="club"
                 name="club"
-                className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent w-full"
+                className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent w-full"
               >
                 {clubdata.map((club, index) => (
                   <option key={index} value={club.name}>
@@ -133,11 +133,11 @@ export default function JoinForm({
               name=""
               id=""
               placeholder="Enter Phone No"
-              className=" border-b-2 border-blue-300 focus:outline-none hover:border-blue-400 focus:border-blue-400 duration-500 bg-transparent "
+              className=" border-b-2 border-[#6f9ded] focus:outline-none hover:border-[#6083c1] focus:border-primary duration-500 bg-transparent "
             />
           </div>
           <div className="flex justify-center">
-            <button className="bg-gradient-to-r from-blue-400 via-blue-400 to-blue-700  text-white px-10 py-1 rounded-md hover:from-blue-700 hover:via-blue-400 hover:to-blue-400 mt-10 sm:mt-0">
+            <button className="bg-gradient-to-r from-[#6083c1] via-[#6f9ded] to-primary  text-white px-10 py-1 rounded-md hover:from-primary hover:via-[#6f9ded] hover:to-[#6083c1] mt-10 sm:mt-0">
               Submit
             </button>
           </div>

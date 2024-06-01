@@ -33,7 +33,7 @@ export default function ViewClubDetail({
           onClick={() => setViewClub(false)}
           className="absolute sm:right-1 sm:top-1 right-5 top-5 z-10"
         >
-          <IoMdCloseCircleOutline className="text-3xl text-blue-500" />
+          <IoMdCloseCircleOutline className="text-3xl text-[#6f9ded]" />
         </button>
         <h1 className="text-center text-xl font-bold py-3 animate-pulse">
           {data.name}

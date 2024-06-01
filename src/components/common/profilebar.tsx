@@ -59,7 +59,7 @@ export default function ProfileBar() {
         <div
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          className="w-10 h-10 relative border-2 hover:border-green-500 rounded-full border-primary"
+          className="w-10 h-10 relative border-2 hover:border-[#6f9ded] rounded-full border-primary"
         >
           <Image
             src={"/logo.png"}
@@ -74,7 +74,7 @@ export default function ProfileBar() {
                 <Link
                   key={index}
                   href={link.link}
-                  className="hover:text-black hover:bg-slate-300"
+                  className="hover:text-black hover:bg-slate-300 rounded-md p-1 text-sm"
                 >
                   {link.name}
                 </Link>
@@ -82,7 +82,7 @@ export default function ProfileBar() {
 
               <button
                 onClick={handleSignOut}
-                className="bg-gradient-to-tr from-blue-200 to-blue-500 text-black hover:font-semibold hover:from-blue-500 hover:to-blue-200 rounded-md hover:text-white py-1 "
+                className="bg-gradient-to-tr  from-[#6f9ded] to-primary text-white hover:font-semibold hover:from-primary hover:to-[#6f9ded] rounded-md py-1 "
               >
                 Logout
               </button>
